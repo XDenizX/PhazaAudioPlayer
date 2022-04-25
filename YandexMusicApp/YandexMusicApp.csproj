@@ -9,10 +9,7 @@
 
     <ItemGroup>
       <PackageReference Include="HandyControls" Version="3.3.11" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Pages" />
+      <PackageReference Include="ReactiveUI" Version="18.0.7" />
     </ItemGroup>
 
 </Project>

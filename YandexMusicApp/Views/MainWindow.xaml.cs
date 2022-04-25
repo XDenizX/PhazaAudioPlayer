@@ -1,11 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Windows;
-using HandyControl.Tools.Extension;
 
-namespace YandexMusicApp
+namespace YandexMusicApp.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -15,12 +11,6 @@ namespace YandexMusicApp
         public MainWindow()
         {
             InitializeComponent();
-            LoadCoverFlow();
-        }
-
-        private void LoadCoverFlow()
-        {
-            
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
