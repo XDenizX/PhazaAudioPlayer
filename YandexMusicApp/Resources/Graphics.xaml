@@ -91,4 +91,38 @@
         </Grid>
     </ControlTemplate>
     
+    <Style 
+        x:Key="PlaylistImageStyle"
+        TargetType="Image">
+        
+        <Style.Triggers>
+            
+            <EventTrigger 
+                RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            To="0.8" 
+                            Storyboard.TargetProperty="(Image.Opacity)" 
+                            Duration="0:0:0.2"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+                                
+            <EventTrigger 
+                RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            To="1.0" 
+                            Storyboard.TargetProperty="(Image.Opacity)" 
+                            Duration="0:0:0.2"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+                                
+        </Style.Triggers>
+        
+    </Style>
+    
 </ResourceDictionary>
