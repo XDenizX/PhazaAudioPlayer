@@ -7,7 +7,7 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              xmlns:viewModels="clr-namespace:YandexMusicApp.ViewModels"
              mc:Ignorable="d"
-             d:DesignHeight="400" d:DesignWidth="500">
+             d:DesignHeight="700" d:DesignWidth="1000">
     <UserControl.DataContext>
         <viewModels:MainUserControlViewModel/>
     </UserControl.DataContext>
@@ -15,6 +15,8 @@
         <hc:CoverView
             Margin="10"
             ShowContent="False"
+            ItemWidth="300"
+            ItemHeight="300"
             ItemsSource="{Binding Playlists}">
             
             <hc:CoverView.ItemHeaderTemplate>
@@ -23,13 +25,68 @@
                         
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         
-                        <Image 
-                            Grid.Row="0"
+                        <Grid>
+                            <Grid.Triggers>
+                                    
+                                <EventTrigger
+                                    RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                To="1.0" 
+                                                Storyboard.TargetName="PlaylistControlPanel"
+                                                Storyboard.TargetProperty="(Image.Opacity)" 
+                                                Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                    
+                                <EventTrigger
+                                    RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                To="0.0" 
+                                                Storyboard.TargetName="PlaylistControlPanel"
+                                                Storyboard.TargetProperty="(Image.Opacity)" 
+                                                Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                    
+                            </Grid.Triggers>
                             
-                            Source="{Binding ImageSource}"/>
+                            <Image 
+                                Grid.Row="0"
+                                Style="{StaticResource PlaylistImageStyle}"
+                                Source="{Binding ImageSource}">
+                                
+                            </Image>
+
+                            <Border
+                                x:Name="PlaylistControlPanel"
+                                Background="#CC111111"
+                                Margin="30, 0"
+                                Opacity="0">
+                                
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                    
+                                    <Button MinWidth="60"
+                                            MinHeight="60"
+                                            Margin="5, 0"
+                                            Template="{StaticResource PlayButtonTemplate}"
+                                            ToolTip="Слушать"/>
+                                    
+                                </StackPanel>
+                                
+                            </Border>
+                        </Grid>
                         
                         <StackPanel
                             Grid.Row="1">
@@ -37,10 +94,16 @@
                             <TextBlock
                                 Text="{Binding Name}"
                                 TextAlignment="Center"
+                                Margin="0,10,0,0"
+                                VerticalAlignment="Center"
+                                FontWeight="Heavy"/>
+                            
+                            <TextBlock
+                                Text="{Binding Artist}"
+                                TextAlignment="Center"
                                 Margin="5"
                                 VerticalAlignment="Center"
-                                FontWeight="Heavy"/>   
-                            
+                                FontWeight="Medium"/>
                         </StackPanel>
                     </Grid>
                     

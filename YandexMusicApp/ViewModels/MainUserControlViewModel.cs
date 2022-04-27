@@ -13,10 +13,12 @@ namespace YandexMusicApp.ViewModels;
 
 public class MainUserControlViewModel : ReactiveObject
 {
+    // TODO: Replace in single class.
     public class PlaylistViewModel : ReactiveObject
     {
         [Reactive] public string ImageUrl { get; init; }
         [Reactive] public string Name { get; init; }
+        [Reactive] public string Artist { get; set; }
         
         public extern ImageSource ImageSource { [ObservableAsProperty] get; }
 
@@ -51,7 +53,8 @@ public class MainUserControlViewModel : ReactiveObject
         Playlists.AddRange(files.Select(filepath => new PlaylistViewModel
         {
             ImageUrl = filepath,
-            Name = Path.GetFileNameWithoutExtension(filepath)
+            Name = Path.GetFileNameWithoutExtension(filepath),
+            Artist = "Tventin Carantino"
         }));
     }
 }
