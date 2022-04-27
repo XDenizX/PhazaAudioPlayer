@@ -13,7 +13,7 @@ namespace YandexMusicApp.ViewModels;
 public class MainWindowViewModel : ReactiveObject
 {
     [Reactive] public UserControl Content { get; set; }
-    [Reactive] public ICommand SwitchMenuItemCommand { get; set; }
+    [Reactive] public ICommand SwitchContentCommand { get; set; }
 
     private readonly IProviderOf<UserControl> _contentProvider;
     
@@ -22,10 +22,10 @@ public class MainWindowViewModel : ReactiveObject
         _contentProvider = new ContentProvider();
         
         Content = _contentProvider.Get<MainUserControl>();
-        SwitchMenuItemCommand = new RelayCommand(SwitchMenuItem);
+        SwitchContentCommand = new RelayCommand(SwitchContent);
     }
 
-    private void SwitchMenuItem(object args)
+    private void SwitchContent(object args)
     {
         if (args is not Type contentType)
         {

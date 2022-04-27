@@ -47,7 +47,7 @@
             
             <hc:SideMenuItem 
                 Header="Главная"
-                Command="{Binding SwitchMenuItemCommand}"
+                Command="{Binding SwitchContentCommand}"
                 CommandParameter="{x:Type userControls:MainUserControl}">
                 <hc:SideMenuItem.Icon>
                     <Image 
@@ -111,7 +111,7 @@
                 
                 <hc:SideMenuItem 
                     Header="Приложение"
-                    Command="{Binding SwitchMenuItemCommand}"
+                    Command="{Binding SwitchContentCommand}"
                     CommandParameter="{x:Type userControls:SettingsUserControl}">
                     <hc:SideMenuItem.Icon>
                         <Image 
@@ -123,7 +123,7 @@
                 
                 <hc:SideMenuItem 
                     Header="Профиль"
-                    Command="{Binding SwitchMenuItemCommand}"
+                    Command="{Binding SwitchContentCommand}"
                     CommandParameter="{x:Type userControls:ProfileUserControl}">
                     <hc:SideMenuItem.Icon>
                         <Image 
@@ -135,7 +135,7 @@
                 
                 <hc:SideMenuItem 
                     Header="О программе"
-                    Command="{Binding SwitchMenuItemCommand}"
+                    Command="{Binding SwitchContentCommand}"
                     CommandParameter="{x:Type userControls:AboutUserControl}">
                     <hc:SideMenuItem.Icon>
                         <Image 
