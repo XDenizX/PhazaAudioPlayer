@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YandexMusicApp", "YandexMusicApp\YandexMusicApp.csproj", "{73DEB102-3ACD-4A95-A145-430F2E2FE1D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Player", "Player\Player.csproj", "{E06C994D-0F09-4F75-A580-1657E0725E1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YandexMusicApp.AudioPlayer", "Player\YandexMusicApp.AudioPlayer.csproj", "{E06C994D-0F09-4F75-A580-1657E0725E1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

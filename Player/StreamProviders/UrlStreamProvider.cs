@@ -1,6 +1,6 @@
-﻿using Player.Models;
+﻿using YandexMusicApp.AudioPlayer.Models;
 
-namespace Player.StreamProviders
+namespace YandexMusicApp.AudioPlayer.StreamProviders
 {
     public class UrlStreamProvider : IStreamProvider
     {
