@@ -197,15 +197,43 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             
-            <Slider
+            <Grid
                 Grid.Row="0"
                 Grid.Column="0"
-                Grid.ColumnSpan="3"
-                hc:TipElement.Visibility="Visible"
-                hc:TipElement.Placement="TopRight"
-                Margin="3"
-                IsMoveToPointEnabled="True"
-                Background="{StaticResource DefaultBrush}"/>
+                Grid.ColumnSpan="3">
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock
+                    Grid.Column="0"
+                    Text="00:00"
+                    Margin="5"
+                    Width="35"
+                    HorizontalAlignment="Center"
+                    TextAlignment="Center"/>
+                
+                <Slider
+                    Grid.Column="1"
+                    hc:TipElement.Visibility="Visible"
+                    hc:TipElement.Placement="TopRight"
+                    Margin="0, 3"
+                    IsMoveToPointEnabled="True"
+                    Maximum="200"
+                    IsSelectionRangeEnabled="True"
+                    Value="{Binding Time}"/>
+                
+                <TextBlock
+                    Grid.Column="2"
+                    Text="01:24"
+                    Margin="5"
+                    Width="35"
+                    HorizontalAlignment="Center"
+                    TextAlignment="Center"/>
+            </Grid>
             
             <StackPanel
                 Grid.Row="1"
