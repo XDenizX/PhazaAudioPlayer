@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using HandyControl.Tools.Command;
 using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 using YandexMusicApp.Infrastructure.Interfaces;
 using YandexMusicApp.Infrastructure.Providers;
 using YandexMusicApp.Views.UserControls;
@@ -11,19 +12,8 @@ namespace YandexMusicApp.ViewModels;
 
 public class MainWindowViewModel : ReactiveObject
 {
-    private UserControl _content;
-    public UserControl Content
-    {
-        get => _content;
-        set => this.RaiseAndSetIfChanged(ref _content, value);
-    }
-
-    private ICommand _switchMenuItemCommandCommand;
-    public ICommand SwitchMenuItemCommand
-    {
-        get => _switchMenuItemCommandCommand;
-        set => this.RaiseAndSetIfChanged(ref _switchMenuItemCommandCommand, value);
-    }
+    [Reactive] public UserControl Content { get; set; }
+    [Reactive] public ICommand SwitchMenuItemCommand { get; set; }
 
     private readonly IProviderOf<UserControl> _contentProvider;
     
@@ -31,8 +21,8 @@ public class MainWindowViewModel : ReactiveObject
     {
         _contentProvider = new ContentProvider();
         
-        _content = _contentProvider.Get<MainUserControl>();
-        _switchMenuItemCommandCommand = new RelayCommand(SwitchMenuItem);
+        Content = _contentProvider.Get<MainUserControl>();
+        SwitchMenuItemCommand = new RelayCommand(SwitchMenuItem);
     }
 
     private void SwitchMenuItem(object args)
