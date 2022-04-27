@@ -1,13 +1,18 @@
-﻿using Player.Models;
+﻿using YandexMusicApp.AudioPlayer.Models;
 
-namespace Player.StreamProviders
+namespace YandexMusicApp.AudioPlayer.StreamProviders
 {
     public class LocalStorageStreamProvider : IStreamProvider
     {
         public Stream? LoadStream(Track track)
         {
-            track.Name = "test";
-            throw new NotImplementedException();
+            Stream memoryStream = new MemoryStream();
+            Stream fileStream = File.Open($"{track.Name}.mp3", FileMode.Open);
+
+            fileStream.CopyTo(memoryStream);
+            fileStream.Close();
+
+            return memoryStream;
         }
     }
 }

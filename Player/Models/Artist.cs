@@ -1,10 +1,13 @@
-﻿namespace Player.Models
+﻿namespace YandexMusicApp.AudioPlayer.Models
 {
     public class Artist
     {
         /// <summary>
-        /// Имя исполнителя
+        /// Имя исполнителя.
         /// </summary>
         public string Name { get; internal set; }
+
+        internal Artist()
+        { }
     }
 }

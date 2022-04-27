@@ -1,20 +1,23 @@
-﻿namespace Player.Models
+﻿namespace YandexMusicApp.AudioPlayer.Models
 {
     public class Track
     {
         /// <summary>
-        /// Уникальный идентификатор трека
+        /// Уникальный идентификатор трека.
         /// </summary>
         public string Uuid { get; internal set; }
 
         /// <summary>
-        /// Имя трека
+        /// Имя трека.
         /// </summary>
         public string Name { get; internal set; }
 
         /// <summary>
-        /// Список исполнителей
+        /// Список исполнителей.
         /// </summary>
         public IEnumerable<Artist> Artists { get; internal set; }
+
+        internal Track()
+        { }
     }
 }
