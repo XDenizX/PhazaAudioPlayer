@@ -57,7 +57,9 @@
                 </hc:SideMenuItem.Icon>
             </hc:SideMenuItem>
             
-            <hc:SideMenuItem Header="Моя музыка">
+            <hc:SideMenuItem 
+                Header="Моя музыка"
+                IsEnabled="False">
                 
                 <hc:SideMenuItem Header="Треки">
                     <hc:SideMenuItem.Icon>
