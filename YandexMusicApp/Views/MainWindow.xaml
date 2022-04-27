@@ -343,7 +343,7 @@
                     Width="100"
                     Value="100"
                     Maximum="100"
-                    Margin="5"
+                    Margin="5, 0, 10, 0"
                     IsMoveToPointEnabled="True"
                     VerticalAlignment="Center"
                     Background="{StaticResource DefaultBrush}"/>
