@@ -2,7 +2,7 @@
 
 namespace YandexMusicApp.AudioPlayer.Players
 {
-    public class NAudioPlayer : IAudioPlayer
+    public class NAudioPlayer : IAudioPlayer, IDisposable
     {
         public bool IsPlaying => _waveOut.PlaybackState == PlaybackState.Playing;
         public bool IsReadyToPlay => _waveStream != null;
@@ -84,6 +84,14 @@ namespace YandexMusicApp.AudioPlayer.Players
         public void Pause()
         {
             _waveOut.Pause();
+        }
+
+        public void Dispose()
+        {
+            _waveOut.PlaybackStopped -= OnPlaybackStopped;
+
+            _waveOut.Dispose();
+            _waveStream?.Dispose();
         }
     }
 }

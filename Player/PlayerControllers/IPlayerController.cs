@@ -1,6 +1,6 @@
 ﻿using YandexMusicApp.AudioPlayer.Models;
 
-namespace YandexMusicApp.AudioPlayer.PlaybackControllers
+namespace YandexMusicApp.AudioPlayer.PlayerControllers
 {
     public interface IPlayerController
     {

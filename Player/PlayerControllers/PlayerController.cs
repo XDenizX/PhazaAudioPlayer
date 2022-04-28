@@ -2,9 +2,9 @@
 using YandexMusicApp.AudioPlayer.Players;
 using YandexMusicApp.AudioPlayer.StreamProviders;
 
-namespace YandexMusicApp.AudioPlayer.PlaybackControllers
+namespace YandexMusicApp.AudioPlayer.PlayerControllers
 {
-    public class PlayerController : IPlayerController
+    public class PlayerController : IPlayerController, IDisposable
     {
         public bool IsPlaying => _player.IsPlaying;
         public Track Current => Playlist.Tracks[_currentTrackIndex];
@@ -139,6 +139,11 @@ namespace YandexMusicApp.AudioPlayer.PlaybackControllers
             {
                 _player.Position = 0.0f;
             }
+        }
+
+        public void Dispose()
+        {
+            _player.StreamEnded -= OnPlayerStreamEnded;
         }
     }
 }
