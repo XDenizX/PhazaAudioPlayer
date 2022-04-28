@@ -10,8 +10,7 @@ namespace YandexMusicApp.AudioPlayer.PlaylistProviders
             {
                 Tracks = new List<Track>
                 {
-                    new() { Name = $"{uuid}_1" },
-                    new() { Name = $"{uuid}_2" }
+                    new() { Name = $"Tracks/{uuid}/1" }
                 }
             };
         }

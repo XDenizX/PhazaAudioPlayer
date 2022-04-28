@@ -113,6 +113,12 @@ namespace YandexMusicApp.AudioPlayer.PlaybackControllers
             _player.Play();
         }
 
+        public void ForcePlay()
+        {
+            PrepareStream(Current);
+            _player.Play();
+        }
+
         public void PausePlayback()
         {
             _player.Pause();

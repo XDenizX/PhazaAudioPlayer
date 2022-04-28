@@ -57,6 +57,11 @@ namespace YandexMusicApp.AudioPlayer.PlaybackControllers
         public float Position { get; set; }
 
         /// <summary>
+        /// Forcibly reloads the stream of the current track and starts playback
+        /// </summary>
+        public void ForcePlay();
+
+        /// <summary>
         /// Start or continue playing current playlist.
         /// </summary>
         public void StartPlayback();
