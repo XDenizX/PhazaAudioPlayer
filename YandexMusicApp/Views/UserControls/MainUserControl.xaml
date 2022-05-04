@@ -62,14 +62,14 @@
                             <Image 
                                 Grid.Row="0"
                                 Style="{StaticResource PlaylistImageStyle}"
-                                Source="{Binding ImageSource}">
-                                
+                                Source="{Binding ImageSource}"
+                                Stretch="Fill">
                             </Image>
 
                             <Border
                                 x:Name="PlaylistControlPanel"
                                 Background="#CC111111"
-                                Margin="30, 0"
+                                Margin="0, 0"
                                 Opacity="0">
                                 
                                 <StackPanel

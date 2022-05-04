@@ -225,6 +225,7 @@
                     Margin="0, 3"
                     IsMoveToPointEnabled="True"
                     Maximum="200"
+                    Background="{StaticResource DefaultBrush}"
                     IsSelectionRangeEnabled="True"
                     Value="{Binding Time}"/>
                 
@@ -243,6 +244,7 @@
                 Orientation="Horizontal">
                 
                 <hc:Gravatar 
+                    Source="C:\Users\deniz\Desktop\AlbumImages\Pyp.jpg"
                     Margin="3"
                     />
                 
@@ -252,13 +254,13 @@
                     VerticalAlignment="Center">
                     
                     <TextBlock 
-                        Text="TrackName"
+                        Text="III E III"
                         FontWeight="Medium"
                         FontSize="14"
                         Margin="3"/>
                     
                     <TextBlock 
-                        Text="Artist"
+                        Text="Tventin Carantino"
                         FontSize="14"
                         Margin="3"/>
                     
