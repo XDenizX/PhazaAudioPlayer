@@ -9,6 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <hc:ThemeResources/>
                 <hc:Theme/>
+                <ResourceDictionary Source="Resources/Converters.xaml"/>
                 <ResourceDictionary Source="Resources/Geometry.xaml"/>
                 <ResourceDictionary Source="Resources/Images.xaml"/>
                 <ResourceDictionary Source="Resources/Graphics.xaml"/>
