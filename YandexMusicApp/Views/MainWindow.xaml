@@ -184,6 +184,7 @@
                     hc:InfoElement.Placeholder="Поиск..."
                     Style="{StaticResource SearchBarPlus}"
                     ShowClearButton="True"/>
+                
             </DockPanel>
             
             <ContentPresenter
@@ -227,7 +228,7 @@
                     HorizontalAlignment="Center"
                     TextAlignment="Center"/>
                 
-                <Slider
+                <hc:PreviewSlider
                     Grid.Column="1"
                     hc:TipElement.Visibility="Visible"
                     hc:TipElement.Placement="TopRight"
@@ -236,7 +237,14 @@
                     Maximum="200"
                     Background="{StaticResource DefaultBrush}"
                     IsSelectionRangeEnabled="True"
-                    Value="{Binding Time}"/>
+                    PreviewContentOffset="4"
+                    Value="{Binding Time}">
+                    
+                    <hc:PreviewSlider.PreviewContent>
+                        <Label Content="{Binding Path=(hc:PreviewSlider.PreviewPosition),RelativeSource={RelativeSource Self}, Converter={StaticResource DoubleToTimeConverter}}"/>
+                    </hc:PreviewSlider.PreviewContent>
+                    
+                </hc:PreviewSlider>
                 
                 <TextBlock
                     Grid.Column="2"
@@ -362,14 +370,22 @@
                         Template="{StaticResource VolumeButtonTemplate}"
                         ToolTip="Громкость"/>
                 
-                <Slider 
+                <hc:PreviewSlider 
                     Width="100"
-                    Value="100"
                     Maximum="100"
                     Margin="5, 0, 10, 0"
                     IsMoveToPointEnabled="True"
                     VerticalAlignment="Center"
-                    Background="{StaticResource DefaultBrush}"/>
+                    PreviewContentOffset="4"
+                    Background="{StaticResource DefaultBrush}">
+                    
+                    <hc:PreviewSlider.PreviewContent>
+                        <Label
+                            Content="{Binding Path=(hc:PreviewSlider.PreviewPosition),RelativeSource={RelativeSource Self}}"
+                            ContentStringFormat="#0"/>
+                    </hc:PreviewSlider.PreviewContent>
+                    
+                </hc:PreviewSlider>
                 
             </StackPanel>
         </Grid>
