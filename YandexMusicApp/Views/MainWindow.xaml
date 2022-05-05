@@ -43,7 +43,8 @@
             Grid.Column="0"
             ExpandMode="ShowAll"
             SubSideBrush="CornflowerBlue"
-            SideBrush="DodgerBlue">
+            SideBrush="DodgerBlue"
+            AutoSelect="True">
             
             <hc:SideMenuItem 
                 Header="Главная"
@@ -58,10 +59,11 @@
             </hc:SideMenuItem>
             
             <hc:SideMenuItem 
-                Header="Моя музыка"
-                IsEnabled="False">
+                Header="Моя музыка">
                 
-                <hc:SideMenuItem Header="Треки">
+                <hc:SideMenuItem 
+                    Header="Треки"
+                    IsEnabled="False">
                     <hc:SideMenuItem.Icon>
                         <Image 
                             Source="{StaticResource TrackImage}"
@@ -70,7 +72,9 @@
                     </hc:SideMenuItem.Icon>
                 </hc:SideMenuItem>
                 
-                <hc:SideMenuItem Header="Альбомы">
+                <hc:SideMenuItem 
+                    Header="Альбомы"
+                    IsEnabled="False">
                     <hc:SideMenuItem.Icon>
                         <Image 
                             Source="{StaticResource AlbumImage}"
@@ -79,7 +83,9 @@
                     </hc:SideMenuItem.Icon>
                 </hc:SideMenuItem>
                 
-                <hc:SideMenuItem Header="Исполнители">
+                <hc:SideMenuItem 
+                    Header="Исполнители"
+                    IsEnabled="False">
                     <hc:SideMenuItem.Icon>
                         <Image 
                             Source="{StaticResource ArtistImage}"
@@ -88,7 +94,9 @@
                     </hc:SideMenuItem.Icon>
                 </hc:SideMenuItem>
                 
-                <hc:SideMenuItem Header="Плейлист">
+                <hc:SideMenuItem 
+                    Header="Плейлист"
+                    IsEnabled="False">
                     <hc:SideMenuItem.Icon>
                         <Image 
                             Source="{StaticResource PlaylistImage}"
@@ -97,7 +105,8 @@
                     </hc:SideMenuItem.Icon>
                 </hc:SideMenuItem>
                 
-                <hc:SideMenuItem Header="Мои файлы">
+                <hc:SideMenuItem 
+                    Header="Мои файлы">
                     <hc:SideMenuItem.Icon>
                         <Image 
                             Source="{StaticResource FilesImage}"
