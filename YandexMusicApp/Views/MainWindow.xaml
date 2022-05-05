@@ -271,15 +271,27 @@
                         Click="ButtonBase_OnClick"
                         Margin="3"
                         Template="{StaticResource HeartButtonTemplate}"
-                        ToolTip="Перейти к предыдущему треку"/>
+                        ToolTip="Нравится"
+                        hc:FloatingBlock.Duration="0:0:0.4"
+                        hc:FloatingBlock.HorizontalOffset="-15"
+                        hc:FloatingBlock.VerticalOffset="-15"
+                        hc:FloatingBlock.ToX="30"
+                        hc:FloatingBlock.ToY="-30">
+                    
+                    <hc:FloatingBlock.ContentTemplate>
+                        <DataTemplate>
+                            <Path Data="{StaticResource FilledHeartGeometry}" Fill="#D32121"/>
+                        </DataTemplate>
+                    </hc:FloatingBlock.ContentTemplate>
+                    
+                </Button>
 
                 <Button MinWidth="40"
                         MinHeight="40"
                         Click="ButtonBase_OnClick"
                         Margin="3"
                         Template="{StaticResource DislikeButtonTemplate}"
-                        ToolTip="Перейти к предыдущему треку"/>
-
+                        ToolTip="Не нравится"/>
                 
             </StackPanel>
             
