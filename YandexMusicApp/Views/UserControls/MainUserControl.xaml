@@ -8,17 +8,23 @@
              xmlns:viewModels="clr-namespace:YandexMusicApp.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="700" d:DesignWidth="1000">
+
     <UserControl.DataContext>
         <viewModels:MainUserControlViewModel/>
     </UserControl.DataContext>
+
     <Grid>
+        <hc:ScrollViewer
+            Name="ScrollViewer"
+            IsInertiaEnabled="True">
+            
         <hc:CoverView
             Name="CoverView"
             ShowContent="False"
             ItemWidth="300"
             ItemHeight="360"
             ItemsSource="{Binding Playlists}">
-            
+
             <hc:CoverView.ItemHeaderTemplate>
                 <DataTemplate>
                     <Grid>
@@ -111,12 +117,14 @@
             </hc:CoverView.ItemHeaderTemplate>
             
         </hc:CoverView>
+
+        </hc:ScrollViewer>
         
         <hc:GotoTop
             Animated="True"
             AutoHiding="True"
             AnimationTime="500"
-            Target="{Binding ElementName=CoverView}"
+            Target="{Binding ElementName=ScrollViewer}"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Margin="0,0,40,20"
@@ -124,4 +132,5 @@
             HidingHeight="400"/>
 
     </Grid>
+    
 </UserControl>
