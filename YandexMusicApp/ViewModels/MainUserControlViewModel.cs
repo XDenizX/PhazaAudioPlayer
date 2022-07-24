@@ -19,13 +19,5 @@ public class MainUserControlViewModel : ReactiveObject
 
     private void LoadPlaylists()
     {
-        string[] files = Directory.GetFiles(@"C:\Users\deniz\Desktop\AlbumImages");
-        
-        Playlists.AddRange(files.Select(filepath => new PlaylistViewModel
-        {
-            ImageUrl = filepath,
-            Name = Path.GetFileNameWithoutExtension(filepath),
-            Artist = "Tventin Carantino"
-        }));
     }
 }

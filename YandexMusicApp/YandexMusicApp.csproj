@@ -13,4 +13,8 @@
       <PackageReference Include="ReactiveUI.Fody" Version="18.0.7" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Player\YandexMusicApp.AudioPlayer.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -1,9 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
 using HandyControl.Tools.Command;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using YandexMusicApp.AudioPlayer.Models;
+using YandexMusicApp.AudioPlayer.PlayerControllers;
+using YandexMusicApp.AudioPlayer.Players;
+using YandexMusicApp.AudioPlayer.PlaylistProviders;
+using YandexMusicApp.AudioPlayer.StreamProviders;
+using YandexMusicApp.AudioPlayer.TrackProviders;
 using YandexMusicApp.Infrastructure.Interfaces;
 using YandexMusicApp.Infrastructure.Providers;
 using YandexMusicApp.Views.UserControls;
@@ -20,7 +27,7 @@ public class MainWindowViewModel : ReactiveObject
     public MainWindowViewModel()
     {
         _contentProvider = new ContentProvider();
-        
+
         Content = _contentProvider.Get<MainUserControl>();
         SwitchContentCommand = new RelayCommand(SwitchContent);
     }

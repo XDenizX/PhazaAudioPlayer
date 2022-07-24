@@ -260,7 +260,6 @@
                 Orientation="Horizontal">
                 
                 <hc:Gravatar 
-                    Source="C:\Users\deniz\Desktop\AlbumImages\Pyp.jpg"
                     Margin="3"
                     />
                 
