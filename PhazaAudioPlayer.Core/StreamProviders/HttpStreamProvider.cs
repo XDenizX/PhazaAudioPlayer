@@ -1,6 +1,6 @@
-﻿using YandexMusicApp.AudioPlayer.Models;
+﻿using PhazaAudioPlayer.Core.Models;
 
-namespace YandexMusicApp.AudioPlayer.StreamProviders
+namespace PhazaAudioPlayer.Core.StreamProviders
 {
     public class HttpStreamProvider : IStreamProvider
     {

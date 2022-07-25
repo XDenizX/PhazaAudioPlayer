@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using PhazaAudioPlayer.Core.PlayerControllers;
+using PhazaAudioPlayer.Core.Players;
+using PhazaAudioPlayer.Core.PlaylistProviders;
+using PhazaAudioPlayer.Core.StreamProviders;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
-using YandexMusicApp.AudioPlayer.PlayerControllers;
-using YandexMusicApp.AudioPlayer.Players;
-using YandexMusicApp.AudioPlayer.PlaylistProviders;
-using YandexMusicApp.AudioPlayer.StreamProviders;
 
 namespace PhazaAudioPlayer.Views
 {

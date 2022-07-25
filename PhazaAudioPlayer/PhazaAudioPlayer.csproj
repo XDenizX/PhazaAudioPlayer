@@ -15,7 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Player\YandexMusicApp.AudioPlayer.csproj" />
+      <ProjectReference Include="..\PhazaAudioPlayer.Core\PhazaAudioPlayer.Core.csproj" />
     </ItemGroup>
 
 </Project>

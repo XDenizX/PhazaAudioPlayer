@@ -1,7 +1,7 @@
-﻿using YandexMusicApp.AudioPlayer.Models;
-using YandexMusicApp.AudioPlayer.TrackProviders;
+﻿using PhazaAudioPlayer.Core.Models;
+using PhazaAudioPlayer.Core.TrackProviders;
 
-namespace YandexMusicApp.AudioPlayer.PlaylistProviders
+namespace PhazaAudioPlayer.Core.PlaylistProviders
 {
     public class TestPlaylistProvider : IPlaylistProvider
     {

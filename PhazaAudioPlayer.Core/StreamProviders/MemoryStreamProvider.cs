@@ -1,6 +1,6 @@
-﻿using YandexMusicApp.AudioPlayer.Models;
+﻿using PhazaAudioPlayer.Core.Models;
 
-namespace YandexMusicApp.AudioPlayer.StreamProviders
+namespace PhazaAudioPlayer.Core.StreamProviders
 {
     public class MemoryStreamProvider : IStreamProvider
     {
@@ -13,7 +13,7 @@ namespace YandexMusicApp.AudioPlayer.StreamProviders
             stream.Dispose();
 
             _streams.Add(track.Name, newMemoryStream);
-            
+
             return newMemoryStream;
         }
 

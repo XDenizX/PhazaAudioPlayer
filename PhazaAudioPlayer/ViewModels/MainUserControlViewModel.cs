@@ -1,11 +1,8 @@
 ﻿using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using DynamicData;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
-namespace YandexMusicApp.ViewModels;
+namespace PhazaAudioPlayer.ViewModels;
 
 public class MainUserControlViewModel : ReactiveObject
 {
