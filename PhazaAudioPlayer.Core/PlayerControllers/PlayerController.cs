@@ -24,7 +24,7 @@ namespace PhazaAudioPlayer.Core.PlayerControllers
         public event Action<Track>? TrackEnded;
         public event Action<Playlist>? PlaylistEnded;
 
-        public IPlayerController.RepeatMode Repeat { get; set; }
+        public RepeatMode Repeat { get; set; }
         public bool IsShuffling { get; set; }
 
         public float Volume
@@ -39,14 +39,16 @@ namespace PhazaAudioPlayer.Core.PlayerControllers
             set => _player.Position = value;
         }
 
+        private const float SkipToEndOffset = 0.03f;
+
         private IAudioPlayer _player;
         private int _currentTrackIndex;
 
-        private IStreamProvider _streamProvider;
+        private StreamFactory _streamFactory;
 
-        public PlayerController(IAudioPlayer player)
+        public PlayerController(IAudioPlayer player, StreamFactory streamFactory)
         {
-            _streamProvider = new LocalStorageStreamProvider();
+            _streamFactory = streamFactory;
 
             _player = player;
             _player.StreamEnded += OnPlayerStreamEnded;
@@ -56,7 +58,7 @@ namespace PhazaAudioPlayer.Core.PlayerControllers
         {
             TrackEnded?.Invoke(Current);
 
-            if (Repeat == IPlayerController.RepeatMode.Track)
+            if (Repeat == RepeatMode.Track)
             {
                 _player.Position = 0.0f;
                 _player.Play();
@@ -69,14 +71,14 @@ namespace PhazaAudioPlayer.Core.PlayerControllers
 
         private void PrepareStream(Track track)
         {
-            _player.SetStream(_streamProvider.LoadStream(track));
+            _player.SetStream(_streamFactory.Load(track));
         }
 
         private void Next()
         {
             if (_currentTrackIndex >= Playlist.Tracks.Count - 1)
             {
-                if (Repeat == IPlayerController.RepeatMode.Playlist)
+                if (Repeat == RepeatMode.Playlist)
                 {
                     _currentTrackIndex = 0;
                 }
@@ -131,7 +133,7 @@ namespace PhazaAudioPlayer.Core.PlayerControllers
 
         public void SkipToStart()
         {
-            if (_player.Position < 0.03f)
+            if (_player.Position < SkipToEndOffset)
             {
                 Previous();
             }

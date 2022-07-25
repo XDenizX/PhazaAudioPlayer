@@ -1,14 +1,21 @@
-﻿using HandyControl.Tools.Command;
-using PhazaAudioPlayer.Infrastructure.Interfaces;
-using PhazaAudioPlayer.Infrastructure.Providers;
-using PhazaAudioPlayer.Views.UserControls;
-using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
+using HandyControl.Tools.Command;
+using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
+using YandexMusicApp.AudioPlayer.Models;
+using YandexMusicApp.AudioPlayer.PlayerControllers;
+using YandexMusicApp.AudioPlayer.Players;
+using YandexMusicApp.AudioPlayer.PlaylistProviders;
+using YandexMusicApp.AudioPlayer.StreamProviders;
+using YandexMusicApp.AudioPlayer.TrackProviders;
+using YandexMusicApp.Infrastructure.Interfaces;
+using YandexMusicApp.Infrastructure.Providers;
+using YandexMusicApp.Views.UserControls;
 
-namespace PhazaAudioPlayer.ViewModels;
+namespace YandexMusicApp.ViewModels;
 
 public class MainWindowViewModel : ReactiveObject
 {
@@ -16,7 +23,7 @@ public class MainWindowViewModel : ReactiveObject
     [Reactive] public ICommand SwitchContentCommand { get; set; }
 
     private readonly IProviderOf<UserControl> _contentProvider;
-
+    
     public MainWindowViewModel()
     {
         _contentProvider = new ContentProvider();

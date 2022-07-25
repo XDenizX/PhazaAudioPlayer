@@ -8,7 +8,7 @@ namespace PhazaAudioPlayer.Core.TrackProviders
         {
             return new Track
             {
-                Name = "1",
+                Name = "track.mp3",
                 Uuid = uuid,
                 Artists = new List<Artist>
                 {

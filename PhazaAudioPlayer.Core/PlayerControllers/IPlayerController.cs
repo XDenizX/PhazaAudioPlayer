@@ -2,15 +2,15 @@
 
 namespace PhazaAudioPlayer.Core.PlayerControllers
 {
+    public enum RepeatMode
+    {
+        None,
+        Track,
+        Playlist
+    }
+
     public interface IPlayerController
     {
-        public enum RepeatMode
-        {
-            None,
-            Track,
-            Playlist
-        }
-
         /// <summary>
         /// Playing current track.
         /// </summary>

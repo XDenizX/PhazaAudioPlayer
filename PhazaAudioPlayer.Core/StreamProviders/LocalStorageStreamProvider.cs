@@ -4,15 +4,37 @@ namespace PhazaAudioPlayer.Core.StreamProviders
 {
     public class LocalStorageStreamProvider : IStreamProvider
     {
-        public Stream? LoadStream(Track track)
+        public Stream? Cache(Track track, Stream stream)
         {
-            Stream memoryStream = new MemoryStream();
-            Stream fileStream = File.Open($"{track.Name}.mp3", FileMode.Open);
+            string fileName = GetTrackFileName(track);
 
-            fileStream.CopyTo(memoryStream);
-            fileStream.Close();
+            if (File.Exists(fileName))
+            {
+                return null;
+            }
 
-            return memoryStream;
+            FileStream fileStream = File.Create(fileName);
+            stream.CopyTo(fileStream);
+            stream.Dispose();
+
+            return fileStream;
+        }
+
+        public Stream? GetLoadingStream(Track track)
+        {
+            string fileName = GetTrackFileName(track);
+
+            if (File.Exists(fileName))
+            {
+                return new FileStream(fileName, FileMode.Open);
+            }
+
+            return null;
+        }
+
+        private string GetTrackFileName(Track track)
+        {
+            return track.Name;
         }
     }
 }
