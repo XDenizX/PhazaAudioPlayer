@@ -13,7 +13,7 @@
                 <ResourceDictionary Source="Resources/Converters.xaml"/>
                 <ResourceDictionary Source="Resources/Geometry.xaml"/>
                 <ResourceDictionary Source="Resources/Images.xaml"/>
-                <ResourceDictionary Source="Resources/Graphics.xaml"/>
+                <ResourceDictionary Source="Resources/Templates.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
