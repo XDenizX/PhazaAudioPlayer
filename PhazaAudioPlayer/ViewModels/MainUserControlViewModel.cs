@@ -1,4 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using DynamicData;
+using HandyControl.Controls;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
@@ -11,10 +16,26 @@ public class MainUserControlViewModel : ReactiveObject
     public MainUserControlViewModel()
     {
         Playlists = new ObservableCollection<PlaylistViewModel>();
+
         LoadPlaylists();
     }
 
     private void LoadPlaylists()
     {
+        try
+        {
+            string[] files = Directory.GetFiles(@"C:\Users\deniz\Desktop\AlbumImages");
+
+            Playlists.AddRange(files.Select(filepath => new PlaylistViewModel
+            {
+                ImageUrl = filepath,
+                Name = Path.GetFileNameWithoutExtension(filepath),
+                Artist = "Tventin Carantino"
+            }));
+        }
+        catch (Exception e)
+        {
+            MessageBox.Error(e.Message, e.TargetSite?.Name);
+        }
     }
 }
