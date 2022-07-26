@@ -40,8 +40,7 @@
                                     Grid.Row="0"
                                     Style="{StaticResource PlaylistImageStyle}"
                                     Source="{Binding ImageSource}"
-                                    Stretch="Fill">
-                                </Image>
+                                    Stretch="Fill"/>
 
                                 <Border
                                     x:Name="PlaylistControlPanel"
@@ -55,8 +54,8 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center">
 
-                                        <Button MinWidth="60"
-                                                MinHeight="60"
+                                        <Button Width="64"
+                                                Height="64"
                                                 Margin="5, 0"
                                                 Template="{StaticResource PlayButtonTemplate}"
                                                 ToolTip="Слушать"/>
