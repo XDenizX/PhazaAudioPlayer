@@ -69,4 +69,55 @@
 
     </Style>
 
+    <Style
+        x:Key="DirectoryItemStyle"
+        TargetType="{x:Type StackPanel}">
+
+        <Setter 
+            Property="Background"
+            Value="#00333333"/>
+
+        <Style.Triggers>
+
+            <EventTrigger
+                RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation
+                            To="{StaticResource SecondaryRegionColor}" 
+                            Storyboard.TargetProperty="(StackPanel.Background).(SolidColorBrush.Color)" 
+                            Duration="0:0:0.1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+            <EventTrigger
+                RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation
+                            To="#00333333"
+                            Storyboard.TargetProperty="(StackPanel.Background).(SolidColorBrush.Color)" 
+                            Duration="0:0:0.2"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+            <EventTrigger
+                RoutedEvent="MouseLeftButtonDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation
+                            To="{StaticResource ThirdlyRegionColor}"
+                            Storyboard.TargetProperty="(StackPanel.Background).(SolidColorBrush.Color)" 
+                            Duration="0:0:0.1"
+                            AutoReverse="True"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+        </Style.Triggers>
+
+    </Style>
+
 </ResourceDictionary>

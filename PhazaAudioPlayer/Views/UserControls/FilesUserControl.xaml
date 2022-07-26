@@ -8,11 +8,11 @@
              xmlns:viewModels="clr-namespace:PhazaAudioPlayer.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="400" d:DesignWidth="600">
-    
+
     <UserControl.DataContext>
         <viewModels:FilesUserControlViewModel/>
     </UserControl.DataContext>
-    
+
     <Grid>
         
         <Grid.RowDefinitions>
@@ -36,22 +36,22 @@
                 Command="{Binding RefreshDirectoriesCommand}"/>
             
         </StackPanel>
-        
-        <ListBox 
-            Grid.Row="1"
-            ItemsSource="{Binding Directories}"
-            hc:ListBoxAttach.IsOddEvenRow="True"
-            AlternationCount="2"
-            Style="{StaticResource ListBoxBaseTransparentStyle}">
 
-            <ListBox.ItemTemplate>
+        <ItemsControl 
+            Grid.Row="1"
+            ItemsSource="{Binding Directories}">
+
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    
+
                     <StackPanel 
-                        Orientation="Horizontal">
-                        
+                        Orientation="Horizontal"
+                        Style="{StaticResource DirectoryItemStyle}">
+
                         <Button 
-                            Margin="5"
+                            Margin="20,5,20,5"
+                            Width="32"
+                            Height="32"
                             VerticalAlignment="Center"
                             Template="{StaticResource PlayButtonTemplate}"/>
                         
@@ -60,13 +60,13 @@
                             Text="{Binding Name}"
                             VerticalAlignment="Center"
                             FontSize="16"
-                            FontWeight="Medium"/>
+                            FontWeight="Normal"/>
                         
                     </StackPanel>
                     
                 </DataTemplate>
-            </ListBox.ItemTemplate>
+            </ItemsControl.ItemTemplate>
             
-        </ListBox>
+        </ItemsControl>
     </Grid>
 </UserControl>
