@@ -1,8 +1,12 @@
-﻿using HandyControl.Tools.Command;
+﻿using DynamicData;
+using HandyControl.Tools.Command;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -30,11 +34,31 @@ public class FilesUserControlViewModel : ReactiveObject
             Description = "Добавить музыку",
             UseDescriptionForTitle = true
         };
+
+        LoadDirectories();
+    }
+
+    private void LoadDirectories()
+    {
+        try
+        {
+            string[] directories = Directory.GetDirectories(@"C:\Users\deniz\Music");
+
+            Directories.AddRange(directories.Select(filepath => new DirectoryViewModel
+            {
+                Name = Path.GetFileName(filepath),
+                Path = filepath
+            }));
+        }
+        catch (Exception e)
+        {
+            Debug.WriteLine(e.Message);
+        }
     }
 
     private void RefreshDirectories(object obj)
     {
-
+        
     }
 
     private void AddDirectory(object obj)
