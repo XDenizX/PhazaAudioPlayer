@@ -110,12 +110,23 @@
                         <ColorAnimation
                             To="{StaticResource ThirdlyRegionColor}"
                             Storyboard.TargetProperty="(StackPanel.Background).(SolidColorBrush.Color)" 
-                            Duration="0:0:0.1"
-                            AutoReverse="True"/>
+                            Duration="0:0:0.1"/>
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
 
+            <EventTrigger
+                RoutedEvent="MouseLeftButtonUp">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation
+                            To="{StaticResource SecondaryRegionColor}"
+                            Storyboard.TargetProperty="(StackPanel.Background).(SolidColorBrush.Color)" 
+                            Duration="0:0:0.1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            
         </Style.Triggers>
 
     </Style>
