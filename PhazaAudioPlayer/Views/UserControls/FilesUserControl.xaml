@@ -33,7 +33,7 @@
             <Button 
                 Content="Добавить аудиофайлы"
                 Margin="5"
-                Command="{Binding AddDirectoryCommand}"/>
+                Command="{Binding AddFilesCommand}"/>
 
             <Button
                 Content="Обновить"
@@ -42,36 +42,42 @@
             
         </StackPanel>
 
-        <ItemsControl 
+        <hc:ScrollViewer
             Grid.Row="1"
-            ItemsSource="{Binding Directories}">
+            IsInertiaEnabled="True">
 
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
+            <ItemsControl 
+                ItemsSource="{Binding UserTracks}">
 
-                    <StackPanel 
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackPanel 
                         Orientation="Horizontal"
                         Style="{StaticResource DirectoryItemStyle}">
 
-                        <Button 
+                            <Button 
                             Margin="20,5,20,5"
                             Width="32"
                             Height="32"
                             VerticalAlignment="Center"
                             Template="{StaticResource PlayButtonTemplate}"/>
-                        
-                        <TextBlock 
+
+                            <TextBlock 
                             Margin="5"
                             Text="{Binding Name}"
                             VerticalAlignment="Center"
                             FontSize="16"
                             FontWeight="Normal"/>
-                        
-                    </StackPanel>
-                    
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            
-        </ItemsControl>
+
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+        </hc:ScrollViewer>
+        
     </Grid>
 </UserControl>
