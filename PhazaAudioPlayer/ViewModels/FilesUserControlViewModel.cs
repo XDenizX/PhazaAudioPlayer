@@ -14,19 +14,23 @@ namespace PhazaAudioPlayer.ViewModels;
 
 public class FilesUserControlViewModel : ReactiveObject
 {
-    [Reactive] public ObservableCollection<DirectoryViewModel> Directories { get; set; }
+    [Reactive] public ObservableCollection<TrackViewModel> UserTracks { get; set; }
 
     [Reactive] public ICommand AddDirectoryCommand { get; set; }
+
+    [Reactive] public ICommand AddFilesCommand { get; set; }
 
     [Reactive] public ICommand RefreshDirectoriesCommand { get; set; }
 
     private readonly FolderBrowserDialog _folderBrowserDialog;
+    private readonly OpenFileDialog _openFileDialog;
 
     public FilesUserControlViewModel()
     {
-        Directories = new ObservableCollection<DirectoryViewModel>();
+        UserTracks = new ObservableCollection<TrackViewModel>();
 
         AddDirectoryCommand = new RelayCommand(AddDirectory);
+        AddFilesCommand = new RelayCommand(AddFiles);
         RefreshDirectoriesCommand = new RelayCommand(RefreshDirectories);
 
         _folderBrowserDialog = new FolderBrowserDialog()
@@ -35,7 +39,19 @@ public class FilesUserControlViewModel : ReactiveObject
             UseDescriptionForTitle = true
         };
 
+        _openFileDialog = new OpenFileDialog()
+        {
+            Filter = "MP3 (*.mp3)|*.mp3|All files (*.*)|*.*",
+            RestoreDirectory = true,
+            Multiselect = true
+        };
+
+        LoadUserFiles();
+    }
+    private void LoadUserFiles()
+    {
         LoadDirectories();
+        LoadFiles();
     }
 
     private void LoadDirectories()
@@ -44,11 +60,10 @@ public class FilesUserControlViewModel : ReactiveObject
         {
             string[] directories = Directory.GetDirectories(@"C:\Users\deniz\Music");
 
-            Directories.AddRange(directories.Select(filepath => new DirectoryViewModel
+            foreach (string directory in directories)
             {
-                Name = Path.GetFileName(filepath),
-                Path = filepath
-            }));
+                AddFilesFromDirectory(directory);
+            }
         }
         catch (Exception e)
         {
@@ -56,9 +71,9 @@ public class FilesUserControlViewModel : ReactiveObject
         }
     }
 
-    private void RefreshDirectories(object obj)
+    private void LoadFiles()
     {
-        
+        // TODO: Load user audio files from settings.
     }
 
     private void AddDirectory(object obj)
@@ -69,10 +84,41 @@ public class FilesUserControlViewModel : ReactiveObject
             return;
         }
 
-        Directories.Add(new DirectoryViewModel()
+        AddFilesFromDirectory(_folderBrowserDialog.SelectedPath);
+    }
+
+    private void AddFilesFromDirectory(string filepath)
+    {
+        string[] files = Directory.GetFiles(filepath, "*.mp3");
+
+        var tracks = files.Select(filename => new TrackViewModel
         {
-            Path = _folderBrowserDialog.SelectedPath,
-            Name = Path.GetFileName(_folderBrowserDialog.SelectedPath)
+            Path = filename,
+            Name = Path.GetFileNameWithoutExtension(filename)
         });
+
+        UserTracks.AddRange(tracks);
+    }
+
+    private void AddFiles(object obj)
+    {
+        DialogResult dialogResult = _openFileDialog.ShowDialog();
+        if (dialogResult != DialogResult.OK)
+        {
+            return;
+        }
+
+        var tracks = _openFileDialog.FileNames.Select(filename => new TrackViewModel
+        {
+            Path = filename,
+            Name = Path.GetFileNameWithoutExtension(filename)
+        });
+
+        UserTracks.AddRange(tracks);
+    }
+
+    private void RefreshDirectories(object obj)
+    {
+        // TODO: Check availability of user audio files.
     }
 }
