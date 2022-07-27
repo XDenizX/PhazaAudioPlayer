@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using DynamicData;
@@ -35,7 +36,7 @@ public class MainUserControlViewModel : ReactiveObject
         }
         catch (Exception e)
         {
-            MessageBox.Error(e.Message, e.TargetSite?.Name);
+            Debug.WriteLine(e.Message);
         }
     }
 }
