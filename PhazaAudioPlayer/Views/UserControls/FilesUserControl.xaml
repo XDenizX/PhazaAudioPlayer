@@ -26,13 +26,18 @@
             Margin="5, 5">
             
             <Button 
-                Content="Добавить музыку"
+                Content="Добавить каталог"
                 Margin="5"
                 Command="{Binding AddDirectoryCommand}"/>
-            
+
             <Button 
+                Content="Добавить аудиофайлы"
                 Margin="5"
+                Command="{Binding AddDirectoryCommand}"/>
+
+            <Button
                 Content="Обновить"
+                Margin="5"
                 Command="{Binding RefreshDirectoriesCommand}"/>
             
         </StackPanel>
