@@ -55,7 +55,7 @@
             <Grid.Triggers>
                 
                 <EventTrigger
-                RoutedEvent="MouseEnter">
+                    RoutedEvent="MouseEnter">
                     <BeginStoryboard>
                         <Storyboard>
                             
@@ -76,7 +76,7 @@
                 </EventTrigger>
 
                 <EventTrigger
-                RoutedEvent="MouseLeave">
+                    RoutedEvent="MouseLeave">
                     <BeginStoryboard>
                         <Storyboard>
                             <ColorAnimation
@@ -211,4 +211,56 @@
         </Grid>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="DeleteButtonTemplate">
+        <Grid>
+
+            <Grid.Triggers>
+
+                <EventTrigger
+                    RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+
+                            <DoubleAnimation
+                                To="1"
+                                Storyboard.TargetName="DeleteButtonEllipse"
+                                Storyboard.TargetProperty="(Ellipse.Opacity)" 
+                                Duration="0:0:0.1"/>
+
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+                <EventTrigger
+                    RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                           
+                            <DoubleAnimation
+                                To="0"
+                                Storyboard.TargetName="DeleteButtonEllipse"
+                                Storyboard.TargetProperty="(Ellipse.Opacity)" 
+                                Duration="0:0:0.2"/>
+                            
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+            </Grid.Triggers>
+
+            <Ellipse 
+                StrokeThickness="1" 
+                Stroke="#22FFFFFF" 
+                Opacity="0"
+                Fill="{StaticResource DangerBrush}"
+                x:Name="DeleteButtonEllipse"/>
+
+            <Image
+                Margin="9"
+                RenderTransformOrigin="0.5,0.5"
+                Source="{StaticResource TrashImage}"/>
+
+        </Grid>
+    </ControlTemplate>
+    
 </ResourceDictionary>

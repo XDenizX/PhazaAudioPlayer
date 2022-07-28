@@ -178,4 +178,13 @@
         </DrawingImage.Drawing>
     </DrawingImage>
 
+    <DrawingImage x:Key="TrashImage">
+        <DrawingImage.Drawing>
+            <GeometryDrawing
+                Brush="#FFFFFFFF"
+                Pen="{x:Null}"
+                Geometry="{StaticResource TrashGeometry}"/>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
 </ResourceDictionary>

@@ -71,7 +71,7 @@
 
     <Style
         x:Key="DirectoryItemStyle"
-        TargetType="{x:Type StackPanel}">
+        TargetType="{x:Type Grid}">
 
         <Setter 
             Property="Background"
@@ -85,7 +85,7 @@
                     <Storyboard>
                         <ColorAnimation
                             To="{StaticResource SecondaryRegionColor}" 
-                            Storyboard.TargetProperty="(StackPanel.Background).(SolidColorBrush.Color)" 
+                            Storyboard.TargetProperty="(Grid.Background).(SolidColorBrush.Color)" 
                             Duration="0:0:0.1"/>
                     </Storyboard>
                 </BeginStoryboard>
@@ -97,7 +97,7 @@
                     <Storyboard>
                         <ColorAnimation
                             To="#00333333"
-                            Storyboard.TargetProperty="(StackPanel.Background).(SolidColorBrush.Color)" 
+                            Storyboard.TargetProperty="(Grid.Background).(SolidColorBrush.Color)" 
                             Duration="0:0:0.2"/>
                     </Storyboard>
                 </BeginStoryboard>
@@ -109,7 +109,7 @@
                     <Storyboard>
                         <ColorAnimation
                             To="{StaticResource ThirdlyRegionColor}"
-                            Storyboard.TargetProperty="(StackPanel.Background).(SolidColorBrush.Color)" 
+                            Storyboard.TargetProperty="(Grid.Background).(SolidColorBrush.Color)" 
                             Duration="0:0:0.1"/>
                     </Storyboard>
                 </BeginStoryboard>
@@ -121,7 +121,7 @@
                     <Storyboard>
                         <ColorAnimation
                             To="{StaticResource SecondaryRegionColor}"
-                            Storyboard.TargetProperty="(StackPanel.Background).(SolidColorBrush.Color)" 
+                            Storyboard.TargetProperty="(Grid.Background).(SolidColorBrush.Color)" 
                             Duration="0:0:0.1"/>
                     </Storyboard>
                 </BeginStoryboard>
