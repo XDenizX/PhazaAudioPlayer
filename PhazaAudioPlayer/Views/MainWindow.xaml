@@ -264,9 +264,8 @@
                 Grid.Column="0"
                 Orientation="Horizontal">
                 
-                <hc:Gravatar 
-                    Margin="3"
-                    />
+                <hc:Gravatar
+                    Margin="5,0,5,0"/>
                 
                 <StackPanel
                     Orientation="Vertical"
@@ -293,11 +292,10 @@
                         Template="{StaticResource HeartButtonTemplate}"
                         ToolTip="Нравится"
                         hc:FloatingBlock.Duration="0:0:0.4"
-                        hc:FloatingBlock.HorizontalOffset="-15"
                         hc:FloatingBlock.VerticalOffset="-15"
                         hc:FloatingBlock.ToX="30"
                         hc:FloatingBlock.ToY="-30">
-                    
+
                     <hc:FloatingBlock.ContentTemplate>
                         <DataTemplate>
                             <Path Data="{StaticResource FilledHeartGeometry}" Fill="#D32121"/>
