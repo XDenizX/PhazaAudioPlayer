@@ -16,7 +16,7 @@
     <Grid>
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="96"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
@@ -26,18 +26,33 @@
             Margin="5, 5">
             
             <Button 
-                Content="Добавить каталог"
-                Margin="5"
+                hc:Poptip.Content="Добавить каталог с аудиофайлами"
+                hc:Poptip.HitMode="Hover"
+                hc:Poptip.Placement="TopLeft"
+                Margin="30,10,10,10"
+                Width="48"
+                Height="48"
+                Template="{StaticResource AddFolderButtonTemplate}"
                 Command="{Binding AddDirectoryCommand}"/>
 
             <Button 
-                Content="Добавить аудиофайлы"
-                Margin="5"
+                hc:Poptip.Content="Добавить аудиофайлы"
+                hc:Poptip.HitMode="Hover"
+                hc:Poptip.Placement="Top"
+                Margin="10"
+                Width="48"
+                Height="48"
+                Template="{StaticResource AddFileButtonTemplate}"
                 Command="{Binding AddFilesCommand}"/>
 
             <Button
-                Content="Обновить"
-                Margin="5"
+                hc:Poptip.Content="Обновить аудиофайлы"
+                hc:Poptip.HitMode="Hover"
+                hc:Poptip.Placement="TopRight"
+                Margin="10"
+                Width="48"
+                Height="48"
+                Template="{StaticResource RefreshButtonTemplate}"
                 Command="{Binding RefreshDirectoriesCommand}"/>
             
         </StackPanel>
