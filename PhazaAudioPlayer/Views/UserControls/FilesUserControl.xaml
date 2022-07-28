@@ -71,23 +71,70 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
 
-                        <StackPanel 
-                        Orientation="Horizontal"
-                        Style="{StaticResource DirectoryItemStyle}">
+                        <Grid
+                            Style="{StaticResource DirectoryItemStyle}">
+
+                            <Grid.Triggers>
+
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                To="1"
+                                                Storyboard.TargetName="PlayButton"
+                                                Storyboard.TargetProperty="Opacity" 
+                                                Duration="0:0:0.1"/>
+                                            <DoubleAnimation
+                                                To="1"
+                                                Storyboard.TargetName="RemoveButton"
+                                                Storyboard.TargetProperty="Opacity" 
+                                                Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                To="0"
+                                                Storyboard.TargetName="PlayButton"
+                                                Storyboard.TargetProperty="Opacity" 
+                                                Duration="0:0:0.2"/>
+                                            <DoubleAnimation
+                                                To="0"
+                                                Storyboard.TargetName="RemoveButton"
+                                                Storyboard.TargetProperty="Opacity" 
+                                                Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+
+                            </Grid.Triggers>
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
 
                             <Button 
-                            Margin="20,5,20,5"
-                            Width="32"
-                            Height="32"
-                            VerticalAlignment="Center"
-                            Template="{StaticResource PlayButtonTemplate}"/>
+                                x:Name="PlayButton"
+                                Grid.Column="0"
+                                Margin="20,5,20,5"
+                                Opacity="0"
+                                Width="32"
+                                Height="32"
+                                VerticalAlignment="Center"
+                                Template="{StaticResource PlayButtonTemplate}"/>
 
                             <TextBlock 
-                            Margin="5"
-                            Text="{Binding Name}"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            FontWeight="Normal"/>
+                                Grid.Column="1"
+                                Margin="5"
+                                Text="{Binding Name}"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                FontWeight="Normal"/>
 
                             <Button
                                 x:Name="RemoveButton"

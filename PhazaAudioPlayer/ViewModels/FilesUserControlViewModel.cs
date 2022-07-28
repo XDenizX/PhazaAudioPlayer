@@ -48,6 +48,7 @@ public class FilesUserControlViewModel : ReactiveObject
 
         LoadUserFiles();
     }
+
     private void LoadUserFiles()
     {
         LoadDirectories();
