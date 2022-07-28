@@ -13,6 +13,10 @@
         <viewModels:FilesUserControlViewModel/>
     </UserControl.DataContext>
 
+    <UserControl.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Delete" Executed="RemoveTrack"/>
+    </UserControl.CommandBindings>
+    
     <Grid>
         
         <Grid.RowDefinitions>
@@ -85,7 +89,19 @@
                             FontSize="16"
                             FontWeight="Normal"/>
 
-                        </StackPanel>
+                            <Button
+                                x:Name="RemoveButton"
+                                Grid.Column="2"
+                                Margin="20,5,20,5"
+                                Opacity="0"
+                                VerticalAlignment="Center"
+                                Width="32"
+                                Height="32"
+                                Template="{StaticResource DeleteButtonTemplate}"
+                                Command="{x:Static ApplicationCommands.Delete}"
+                                CommandParameter="{Binding Path=DataContext, RelativeSource={RelativeSource Mode=Self}}"/>
+
+                        </Grid>
 
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

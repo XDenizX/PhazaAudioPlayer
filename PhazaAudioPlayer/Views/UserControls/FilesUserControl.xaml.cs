@@ -1,5 +1,7 @@
 ﻿using PhazaAudioPlayer.ViewModels;
 using ReactiveUI;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace PhazaAudioPlayer.Views.UserControls;
 
@@ -22,5 +24,15 @@ public partial class FilesUserControl : UserControl, IViewFor<FilesUserControlVi
     public FilesUserControl()
     {
         InitializeComponent();
+    }
+
+    public void RemoveTrack(object target, ExecutedRoutedEventArgs e)
+    {
+        if (e.Parameter is not TrackViewModel track)
+        {
+            return;
+        }
+
+        ViewModel?.UserTracks.Remove(track);
     }
 }
