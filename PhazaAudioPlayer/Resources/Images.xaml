@@ -160,4 +160,22 @@
         </DrawingImage.Drawing>
     </DrawingImage>
 
+    <DrawingImage x:Key="AddFolderImage">
+        <DrawingImage.Drawing>
+            <GeometryDrawing
+                Brush="#FFFFFFFF"
+                Pen="{x:Null}"
+                Geometry="{StaticResource AddFolderGeometry}"/>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <DrawingImage x:Key="RefreshImage">
+        <DrawingImage.Drawing>
+            <GeometryDrawing
+                Brush="#FFFFFFFF"
+                Pen="{x:Null}"
+                Geometry="{StaticResource RefreshGeometry}"/>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
 </ResourceDictionary>

@@ -144,4 +144,71 @@
         </Grid>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="AddFolderButtonTemplate">
+        <Grid>
+            <Ellipse 
+                StrokeThickness="1" 
+                Stroke="#22FFFFFF" 
+                Fill="#0AFFFFFF"/>
+            <Image
+                Margin="9"
+                RenderTransformOrigin="0.5,0.5"
+                Source="{StaticResource AddFolderImage}">
+
+                <Image.RenderTransform>
+                    <ScaleTransform 
+                        ScaleX="0.7" 
+                        ScaleY="0.7"/>
+                </Image.RenderTransform>
+
+            </Image>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="AddFileButtonTemplate">
+        <Grid>
+            <Ellipse 
+                StrokeThickness="1" 
+                Stroke="#22FFFFFF" 
+                Fill="#0AFFFFFF"/>
+            <Image
+                Margin="9"
+                RenderTransformOrigin="0.2,0.5"
+                Source="{StaticResource TrackImage}">
+
+                <Image.RenderTransform>
+                    
+                    <ScaleTransform 
+                            ScaleX="0.7" 
+                            ScaleY="0.7"/>
+
+                </Image.RenderTransform>
+
+            </Image>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="RefreshButtonTemplate">
+        <Grid>
+            <Ellipse 
+                StrokeThickness="1" 
+                Stroke="#22FFFFFF" 
+                Fill="#0AFFFFFF"/>
+            <Image
+                Margin="9"
+                RenderTransformOrigin="0.5,0.5"
+                Source="{StaticResource RefreshImage}">
+
+                <Image.RenderTransform>
+
+                    <ScaleTransform 
+                            ScaleX="0.8" 
+                            ScaleY="0.8"/>
+
+                </Image.RenderTransform>
+
+            </Image>
+        </Grid>
+    </ControlTemplate>
+
 </ResourceDictionary>
