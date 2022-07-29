@@ -107,6 +107,11 @@
                                                 Storyboard.TargetName="RemoveButton"
                                                 Storyboard.TargetProperty="Opacity" 
                                                 Duration="0:0:0.1"/>
+                                        <DoubleAnimation
+                                                To="0"
+                                                Storyboard.TargetName="TrackImage"
+                                                Storyboard.TargetProperty="Opacity" 
+                                                Duration="0:0:0.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -124,6 +129,11 @@
                                                 Storyboard.TargetName="RemoveButton"
                                                 Storyboard.TargetProperty="Opacity" 
                                                 Duration="0:0:0.2"/>
+                                        <DoubleAnimation
+                                                To="1"
+                                                Storyboard.TargetName="TrackImage"
+                                                Storyboard.TargetProperty="Opacity" 
+                                                Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -136,35 +146,42 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
+                        <Image
+                            x:Name="TrackImage"
+                            Source="{StaticResource TrackImage}"
+                            Width="24"
+                            Height="24"
+                            Margin="5"/>
+
                         <Button 
-                                x:Name="PlayButton"
-                                Grid.Column="0"
-                                Margin="20,5,20,5"
-                                Opacity="0"
-                                Width="32"
-                                Height="32"
-                                VerticalAlignment="Center"
-                                Template="{StaticResource PlayButtonTemplate}"/>
+                            x:Name="PlayButton"
+                            Grid.Column="0"
+                            Margin="20,5,20,5"
+                            Opacity="0"
+                            Width="32"
+                            Height="32"
+                            VerticalAlignment="Center"
+                            Template="{StaticResource PlayButtonTemplate}"/>
 
                         <TextBlock 
-                                Grid.Column="1"
-                                Margin="5"
-                                Text="{Binding Name}"
-                                VerticalAlignment="Center"
-                                FontSize="16"
-                                FontWeight="Normal"/>
+                            Grid.Column="1"
+                            Margin="5"
+                            Text="{Binding Name}"
+                            VerticalAlignment="Center"
+                            FontSize="16"
+                            FontWeight="Normal"/>
 
                         <Button
-                                x:Name="RemoveButton"
-                                Grid.Column="2"
-                                Margin="20,5,20,5"
-                                Opacity="0"
-                                VerticalAlignment="Center"
-                                Width="32"
-                                Height="32"
-                                Template="{StaticResource DeleteButtonTemplate}"
-                                Command="{x:Static ApplicationCommands.Delete}"
-                                CommandParameter="{Binding Path=DataContext, RelativeSource={RelativeSource Mode=Self}}"/>
+                            x:Name="RemoveButton"
+                            Grid.Column="2"
+                            Margin="20,5,20,5"
+                            Opacity="0"
+                            VerticalAlignment="Center"
+                            Width="32"
+                            Height="32"
+                            Template="{StaticResource DeleteButtonTemplate}"
+                            Command="{x:Static ApplicationCommands.Delete}"
+                            CommandParameter="{Binding Path=DataContext, RelativeSource={RelativeSource Mode=Self}}"/>
 
                     </Grid>
 
