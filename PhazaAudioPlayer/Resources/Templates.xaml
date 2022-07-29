@@ -167,6 +167,22 @@
 
     <ControlTemplate x:Key="AddFileButtonTemplate">
         <Grid>
+
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                To="-5"
+                                Storyboard.TargetName="AddFileButtonImageTranslateTransform"
+                                Storyboard.TargetProperty="Y"
+                                Duration="0:0:0.1"
+                                AutoReverse="True"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+
             <Ellipse 
                 StrokeThickness="1" 
                 Stroke="#22FFFFFF" 
@@ -177,11 +193,16 @@
                 Source="{StaticResource TrackImage}">
 
                 <Image.RenderTransform>
-                    
-                    <ScaleTransform 
+                    <TransformGroup>
+                        
+                        <TranslateTransform
+                            x:Name="AddFileButtonImageTranslateTransform"/>
+
+                        <ScaleTransform 
                             ScaleX="0.7" 
                             ScaleY="0.7"/>
-
+                        
+                    </TransformGroup>
                 </Image.RenderTransform>
 
             </Image>
