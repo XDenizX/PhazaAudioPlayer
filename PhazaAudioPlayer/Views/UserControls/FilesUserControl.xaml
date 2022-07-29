@@ -61,64 +61,83 @@
             
         </StackPanel>
 
-        <hc:ScrollViewer
+        <ItemsControl 
             Grid.Row="1"
-            IsInertiaEnabled="True">
+            ItemsSource="{Binding UserTracks}"
+            VirtualizingStackPanel.IsVirtualizing="True"
+            VirtualizingStackPanel.VirtualizationMode="Recycling"
+            VirtualizingStackPanel.CacheLength="15">
 
-            <ItemsControl 
-                ItemsSource="{Binding UserTracks}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel 
+                        Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
 
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
+            <ItemsControl.Template>
 
-                        <Grid
-                            Style="{StaticResource DirectoryItemStyle}">
+                <ControlTemplate>
+                    <hc:ScrollViewer
+                        CanContentScroll="True"
+                        IsInertiaEnabled="True">
+                        <ItemsPresenter/>
+                    </hc:ScrollViewer>
+                </ControlTemplate>
 
-                            <Grid.Triggers>
+            </ItemsControl.Template>
 
-                                <EventTrigger RoutedEvent="MouseEnter">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+
+                    <Grid
+                        Style="{StaticResource DirectoryItemStyle}">
+
+                        <Grid.Triggers>
+
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
                                                 To="1"
                                                 Storyboard.TargetName="PlayButton"
                                                 Storyboard.TargetProperty="Opacity" 
                                                 Duration="0:0:0.1"/>
-                                            <DoubleAnimation
+                                        <DoubleAnimation
                                                 To="1"
                                                 Storyboard.TargetName="RemoveButton"
                                                 Storyboard.TargetProperty="Opacity" 
                                                 Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
 
-                                <EventTrigger RoutedEvent="MouseLeave">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
                                                 To="0"
                                                 Storyboard.TargetName="PlayButton"
                                                 Storyboard.TargetProperty="Opacity" 
                                                 Duration="0:0:0.2"/>
-                                            <DoubleAnimation
+                                        <DoubleAnimation
                                                 To="0"
                                                 Storyboard.TargetName="RemoveButton"
                                                 Storyboard.TargetProperty="Opacity" 
                                                 Duration="0:0:0.2"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
 
-                            </Grid.Triggers>
-                            
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
+                        </Grid.Triggers>
 
-                            <Button 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button 
                                 x:Name="PlayButton"
                                 Grid.Column="0"
                                 Margin="20,5,20,5"
@@ -128,7 +147,7 @@
                                 VerticalAlignment="Center"
                                 Template="{StaticResource PlayButtonTemplate}"/>
 
-                            <TextBlock 
+                        <TextBlock 
                                 Grid.Column="1"
                                 Margin="5"
                                 Text="{Binding Name}"
@@ -136,7 +155,7 @@
                                 FontSize="16"
                                 FontWeight="Normal"/>
 
-                            <Button
+                        <Button
                                 x:Name="RemoveButton"
                                 Grid.Column="2"
                                 Margin="20,5,20,5"
@@ -148,14 +167,12 @@
                                 Command="{x:Static ApplicationCommands.Delete}"
                                 CommandParameter="{Binding Path=DataContext, RelativeSource={RelativeSource Mode=Self}}"/>
 
-                        </Grid>
+                    </Grid>
 
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
 
-            </ItemsControl>
+        </ItemsControl>
 
-        </hc:ScrollViewer>
-        
     </Grid>
 </UserControl>
