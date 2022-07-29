@@ -79,8 +79,7 @@
 
                 <ControlTemplate>
                     <hc:ScrollViewer
-                        CanContentScroll="True"
-                        IsInertiaEnabled="True">
+                        CanContentScroll="True">
                         <ItemsPresenter/>
                     </hc:ScrollViewer>
                 </ControlTemplate>
