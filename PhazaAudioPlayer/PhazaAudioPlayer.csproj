@@ -8,10 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="HandyControls" Version="3.3.11" />
+      <PackageReference Include="HandyControls" Version="3.4.1" />
       <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
-      <PackageReference Include="ReactiveUI" Version="18.0.7" />
-      <PackageReference Include="ReactiveUI.Fody" Version="18.0.7" />
+      <PackageReference Include="ReactiveUI" Version="18.3.1" />
+      <PackageReference Include="ReactiveUI.Fody" Version="18.3.1" />
+      <PackageReference Include="ReactiveUI.WPF" Version="18.3.1" />
     </ItemGroup>
 
     <ItemGroup>
