@@ -30,9 +30,7 @@
             Margin="5, 5">
             
             <Button 
-                hc:Poptip.Content="Добавить каталог с аудиофайлами"
-                hc:Poptip.HitMode="Hover"
-                hc:Poptip.Placement="TopLeft"
+                ToolTip="Добавить каталог с аудиофайлами"
                 Margin="30,10,10,10"
                 Width="48"
                 Height="48"
@@ -40,9 +38,7 @@
                 Command="{Binding AddDirectoryCommand}"/>
 
             <Button 
-                hc:Poptip.Content="Добавить аудиофайлы"
-                hc:Poptip.HitMode="Hover"
-                hc:Poptip.Placement="Top"
+                ToolTip="Добавить аудиофайлы"
                 Margin="10"
                 Width="48"
                 Height="48"
@@ -50,9 +46,7 @@
                 Command="{Binding AddFilesCommand}"/>
 
             <Button
-                hc:Poptip.Content="Обновить аудиофайлы"
-                hc:Poptip.HitMode="Hover"
-                hc:Poptip.Placement="TopRight"
+                ToolTip="Обновить музыку"
                 Margin="10"
                 Width="48"
                 Height="48"
@@ -124,7 +118,8 @@
                                 <Button
                                     Margin="10"
                                     Content="Давайте!"
-                                    Height="40"
+                                    Height="48"
+                                    Width="120"
                                     FontSize="18"
                                     FontWeight="Medium"
                                     Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.AddFilesCommand}"/>
