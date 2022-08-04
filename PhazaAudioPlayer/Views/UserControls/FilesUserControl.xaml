@@ -61,7 +61,8 @@
             
         </StackPanel>
 
-        <ItemsControl 
+        <ItemsControl
+            x:Name="UserTracksControl"
             Grid.Row="1"
             ItemsSource="{Binding UserTracks}"
             VirtualizingStackPanel.IsVirtualizing="True"
@@ -78,10 +79,39 @@
             <ItemsControl.Template>
 
                 <ControlTemplate>
-                    <hc:ScrollViewer
-                        CanContentScroll="True">
-                        <ItemsPresenter/>
-                    </hc:ScrollViewer>
+                    <hc:ToggleBlock 
+                        VerticalContentAlignment="Stretch" 
+                        HorizontalContentAlignment="Stretch"
+                        IsChecked="{Binding ElementName=UserTracksControl, Path=HasItems, Mode=OneWay}">
+
+                        <hc:ToggleBlock.CheckedContent>
+                            <hc:ScrollViewer
+                                CanContentScroll="True">
+                                <ItemsPresenter/>
+                            </hc:ScrollViewer>
+                        </hc:ToggleBlock.CheckedContent>
+
+                        <hc:ToggleBlock.UnCheckedContent>
+                            <StackPanel 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center">
+
+                                <hc:Empty
+                                    hc:Empty.ShowEmpty="True"
+                                    Description="Сейчас здесь пусто. Давайте добавим Вашу музыку?"
+                                    FontSize="20"
+                                    Margin="10"
+                                    Foreground="{StaticResource SecondaryTextBrush}"/>
+
+                                <Button
+                                    Margin="10"
+                                    Content="Давайте!"
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.AddFilesCommand}"/>
+                                
+                            </StackPanel>
+                        </hc:ToggleBlock.UnCheckedContent>
+                        
+                    </hc:ToggleBlock>
                 </ControlTemplate>
 
             </ItemsControl.Template>
