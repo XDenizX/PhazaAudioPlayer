@@ -101,11 +101,32 @@
                                     Description="Сейчас здесь пусто. Давайте добавим Вашу музыку?"
                                     FontSize="20"
                                     Margin="10"
-                                    Foreground="{StaticResource SecondaryTextBrush}"/>
+                                    Foreground="{StaticResource SecondaryTextBrush}">
+
+                                    <hc:Empty.Logo>
+                                        <Path
+                                            Data="{DynamicResource NoTracksGeometry}"
+                                            Fill="{StaticResource SecondaryTextBrush}"
+                                            HorizontalAlignment="Center"
+                                            RenderTransformOrigin="0.5,1.5">
+
+                                            <Path.RenderTransform>
+                                                <ScaleTransform
+                                                    ScaleX="3"
+                                                    ScaleY="3"/>
+                                            </Path.RenderTransform>
+                                            
+                                        </Path>
+                                    </hc:Empty.Logo>
+
+                                 </hc:Empty>
 
                                 <Button
                                     Margin="10"
                                     Content="Давайте!"
+                                    Height="40"
+                                    FontSize="18"
+                                    FontWeight="Medium"
                                     Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.AddFilesCommand}"/>
                                 
                             </StackPanel>
