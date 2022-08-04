@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
+using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 
 namespace PhazaAudioPlayer.ViewModels;
 
@@ -22,9 +23,6 @@ public class FilesUserControlViewModel : ReactiveObject
 
     [Reactive] public ICommand RefreshDirectoriesCommand { get; set; }
 
-    private readonly FolderBrowserDialog _folderBrowserDialog;
-    private readonly OpenFileDialog _openFileDialog;
-
     public FilesUserControlViewModel()
     {
         UserTracks = new ObservableCollection<TrackViewModel>();
@@ -33,20 +31,7 @@ public class FilesUserControlViewModel : ReactiveObject
         AddFilesCommand = new RelayCommand(AddFiles);
         RefreshDirectoriesCommand = new RelayCommand(RefreshDirectories);
 
-        _folderBrowserDialog = new FolderBrowserDialog()
-        {
-            Description = "Добавить музыку",
-            UseDescriptionForTitle = true
-        };
-
-        _openFileDialog = new OpenFileDialog()
-        {
-            Filter = "MP3 (*.mp3)|*.mp3|All files (*.*)|*.*",
-            RestoreDirectory = true,
-            Multiselect = true
-        };
-
-        LoadUserFiles();
+        // LoadUserFiles();
     }
 
     private void LoadUserFiles()
@@ -79,13 +64,19 @@ public class FilesUserControlViewModel : ReactiveObject
 
     private void AddDirectory(object obj)
     {
-        DialogResult dialogResult = _folderBrowserDialog.ShowDialog();
+        var folderBrowserDialog = new FolderBrowserDialog()
+        {
+            Description = "Добавить музыку",
+            UseDescriptionForTitle = true
+        };
+
+        DialogResult dialogResult = folderBrowserDialog.ShowDialog();
         if (dialogResult != DialogResult.OK)
         {
             return;
         }
 
-        AddFilesFromDirectory(_folderBrowserDialog.SelectedPath);
+        AddFilesFromDirectory(folderBrowserDialog.SelectedPath);
     }
 
     private void AddFilesFromDirectory(string filepath)
@@ -102,14 +93,21 @@ public class FilesUserControlViewModel : ReactiveObject
     }
 
     private void AddFiles(object obj)
-    {
-        DialogResult dialogResult = _openFileDialog.ShowDialog();
+{
+        var openFileDialog = new OpenFileDialog
+        {
+            Filter = "MP3 (*.mp3)|*.mp3|All files (*.*)|*.*",
+            RestoreDirectory = true,
+            Multiselect = true
+        };
+
+        DialogResult dialogResult = openFileDialog.ShowDialog();
         if (dialogResult != DialogResult.OK)
         {
             return;
         }
 
-        var tracks = _openFileDialog.FileNames.Select(filename => new TrackViewModel
+        var tracks = openFileDialog.FileNames.Select(filename => new TrackViewModel
         {
             Path = filename,
             Name = Path.GetFileNameWithoutExtension(filename)
