@@ -37,20 +37,6 @@ public class FilesUserControlViewModel : ReactiveObject
 
         RefreshDirectoriesCommand
             .Subscribe(tracks => UserTracks = new ObservableCollection<TrackViewModel>(tracks));
-
-        LoadUserFiles();
-    }
-
-    private void LoadUserFiles()
-    {
-        for (int i = 0; i < 5; i++)
-        {
-            UserTracks.Add(new TrackViewModel
-            {
-                Path = string.Empty,
-                Name = Path.GetRandomFileName()
-            });
-        }
     }
 
     private IEnumerable<TrackViewModel> GetTracks()
