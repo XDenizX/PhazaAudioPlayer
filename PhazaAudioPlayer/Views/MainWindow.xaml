@@ -171,24 +171,27 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             
-            <DockPanel 
+            <StackPanel 
                 Grid.Row="0"
-                Margin="10">
-                
+                Margin="10"
+                Orientation="Horizontal">
+
                 <Image 
                     MaxWidth="20" 
                     MaxHeight="20"
                     Margin="10"
-                    Source="{StaticResource SearchImage}">
-                </Image>
-                
-                <hc:SearchBar 
+                    Source="{StaticResource SearchImage}"/>
+
+                <hc:SearchBar
+                    x:Name="SearchBar"
                     MaxHeight="30"
                     ToolTip="Поиск"
+                    Width="500"
                     hc:InfoElement.Placeholder="Поиск..."
-                    Style="{StaticResource SearchBarPlus}"/>
+                    Style="{StaticResource SearchBarPlus}"
+                    HorizontalAlignment="Stretch"/>
                 
-            </DockPanel>
+            </StackPanel>
             
             <ContentPresenter
                 Grid.Row="1"
