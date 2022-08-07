@@ -35,4 +35,9 @@ public partial class FilesUserControl : UserControl, IViewFor<FilesUserControlVi
 
         ViewModel?.UserTracks.Remove(track);
     }
+
+    private void PlayTrack(object sender, ExecutedRoutedEventArgs e)
+    {
+        ViewModel?.PlayAudioCommand.Execute(e.Parameter);
+    }
 }

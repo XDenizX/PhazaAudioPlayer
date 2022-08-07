@@ -15,6 +15,7 @@
 
     <UserControl.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Delete" Executed="RemoveTrack"/>
+        <CommandBinding Command="MediaCommands.Play" Executed="PlayTrack"/>
     </UserControl.CommandBindings>
     
     <Grid>
@@ -207,6 +208,8 @@
                             Width="32"
                             Height="32"
                             VerticalAlignment="Center"
+                            Command="{x:Static MediaCommands.Play}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext}"
                             Template="{StaticResource PlayButtonTemplate}"/>
 
                         <TextBlock 

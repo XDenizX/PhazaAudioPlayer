@@ -1,4 +1,5 @@
 ﻿using DynamicData;
+using HandyControl.Tools.Command;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
@@ -6,9 +7,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Forms;
+using System.Windows.Input;
+using System.Windows.Media;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 
 namespace PhazaAudioPlayer.ViewModels;
@@ -21,11 +25,16 @@ public class FilesUserControlViewModel : ReactiveObject
     [Reactive] public ReactiveCommand<Unit, IEnumerable<TrackViewModel>> AddFilesCommand { get; set; }
     [Reactive] public ReactiveCommand<Unit, IEnumerable<TrackViewModel>> RefreshDirectoriesCommand { get; set; }
 
+    [Reactive] public ICommand PlayAudioCommand { get; set; }
+
+    private readonly MediaPlayer _mediaPlayer = new();
+
     public FilesUserControlViewModel()
     {
         AddDirectoryCommand = ReactiveCommand.Create(GetTracksFromDirectory);
         AddFilesCommand = ReactiveCommand.Create(GetTracks);
         RefreshDirectoriesCommand = ReactiveCommand.Create(RefreshDirectories);
+        PlayAudioCommand = new RelayCommand<TrackViewModel>(PlayAudio);
 
         AddFilesCommand
             .Where(x => x.Any())
@@ -37,6 +46,7 @@ public class FilesUserControlViewModel : ReactiveObject
 
         RefreshDirectoriesCommand
             .Subscribe(tracks => UserTracks = new ObservableCollection<TrackViewModel>(tracks));
+
     }
 
     private IEnumerable<TrackViewModel> GetTracks()
@@ -92,5 +102,12 @@ public class FilesUserControlViewModel : ReactiveObject
     {
         // TODO: Check availability of user audio files.
         throw new NotImplementedException();
+    }
+
+    private void PlayAudio(TrackViewModel track)
+    {
+        _mediaPlayer.Stop();
+        _mediaPlayer.Open(new Uri(track.Path));
+        _mediaPlayer.Play();
     }
 }
