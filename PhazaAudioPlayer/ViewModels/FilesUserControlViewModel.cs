@@ -1,5 +1,6 @@
 ﻿using DynamicData;
 using HandyControl.Tools.Command;
+using PhazaAudioPlayer.Services;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
@@ -7,12 +8,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Media;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 
 namespace PhazaAudioPlayer.ViewModels;
@@ -27,7 +26,7 @@ public class FilesUserControlViewModel : ReactiveObject
 
     [Reactive] public ICommand PlayTrackCommand { get; set; }
 
-    private readonly MediaPlayer _mediaPlayer = new();
+    private readonly PlaybackService _playbackService = Kernel.Get<PlaybackService>();
 
     public FilesUserControlViewModel()
     {
@@ -46,7 +45,6 @@ public class FilesUserControlViewModel : ReactiveObject
 
         RefreshDirectoriesCommand
             .Subscribe(tracks => UserTracks = new ObservableCollection<TrackViewModel>(tracks));
-
     }
 
     private IEnumerable<TrackViewModel> GetTracks()
@@ -107,7 +105,5 @@ public class FilesUserControlViewModel : ReactiveObject
     private void PlayTrack(TrackViewModel track)
     {
         
-        _mediaPlayer.Open(new Uri(track.Path));
-        _mediaPlayer.Play();
     }
 }
