@@ -4,7 +4,7 @@ using System.Windows.Input;
 using HandyControl.Tools.Command;
 using PhazaAudioPlayer.Infrastructure.Interfaces;
 using PhazaAudioPlayer.Infrastructure.Providers;
-using PhazaAudioPlayer.Views.UserControls;
+using PhazaAudioPlayer.Views.Contents;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
@@ -21,7 +21,7 @@ public class MainWindowViewModel : ReactiveObject
     {
         _contentProvider = new ContentProvider();
 
-        Content = _contentProvider.Get<MainUserControl>();
+        Content = _contentProvider.Get<MainContent>();
         SwitchContentCommand = new RelayCommand(SwitchContent);
     }
 

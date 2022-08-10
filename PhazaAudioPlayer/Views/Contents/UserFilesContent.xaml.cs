@@ -3,9 +3,9 @@ using ReactiveUI;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace PhazaAudioPlayer.Views.UserControls;
+namespace PhazaAudioPlayer.Views.Contents;
 
-public partial class FilesUserControl : UserControl, IViewFor<FilesUserControlViewModel>
+public partial class UserFilesContent : UserControl, IViewFor<FilesUserControlViewModel>
 {
     #region ViewModel
     public FilesUserControlViewModel? ViewModel
@@ -21,7 +21,7 @@ public partial class FilesUserControl : UserControl, IViewFor<FilesUserControlVi
     }
     #endregion
 
-    public FilesUserControl()
+    public UserFilesContent()
     {
         InitializeComponent();
     }
