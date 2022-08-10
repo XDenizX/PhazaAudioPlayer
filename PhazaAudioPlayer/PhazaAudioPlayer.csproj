@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <PackageReference Include="HandyControls" Version="3.4.1" />
+      <PackageReference Include="Ninject" Version="3.3.6" />
       <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
       <PackageReference Include="ReactiveUI" Version="18.3.1" />
       <PackageReference Include="ReactiveUI.Fody" Version="18.3.1" />
