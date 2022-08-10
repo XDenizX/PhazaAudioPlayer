@@ -25,7 +25,7 @@ public class FilesUserControlViewModel : ReactiveObject
     [Reactive] public ReactiveCommand<Unit, IEnumerable<TrackViewModel>> AddFilesCommand { get; set; }
     [Reactive] public ReactiveCommand<Unit, IEnumerable<TrackViewModel>> RefreshDirectoriesCommand { get; set; }
 
-    [Reactive] public ICommand PlayAudioCommand { get; set; }
+    [Reactive] public ICommand PlayTrackCommand { get; set; }
 
     private readonly MediaPlayer _mediaPlayer = new();
 
@@ -34,7 +34,7 @@ public class FilesUserControlViewModel : ReactiveObject
         AddDirectoryCommand = ReactiveCommand.Create(GetTracksFromDirectory);
         AddFilesCommand = ReactiveCommand.Create(GetTracks);
         RefreshDirectoriesCommand = ReactiveCommand.Create(RefreshDirectories);
-        PlayAudioCommand = new RelayCommand<TrackViewModel>(PlayAudio);
+        PlayTrackCommand = new RelayCommand<TrackViewModel>(PlayTrack);
 
         AddFilesCommand
             .Where(x => x.Any())
@@ -104,9 +104,9 @@ public class FilesUserControlViewModel : ReactiveObject
         throw new NotImplementedException();
     }
 
-    private void PlayAudio(TrackViewModel track)
+    private void PlayTrack(TrackViewModel track)
     {
-        _mediaPlayer.Stop();
+        
         _mediaPlayer.Open(new Uri(track.Path));
         _mediaPlayer.Play();
     }

@@ -38,6 +38,6 @@ public partial class FilesUserControl : UserControl, IViewFor<FilesUserControlVi
 
     private void PlayTrack(object sender, ExecutedRoutedEventArgs e)
     {
-        ViewModel?.PlayAudioCommand.Execute(e.Parameter);
+        ViewModel?.PlayTrackCommand.Execute(e.Parameter);
     }
 }
