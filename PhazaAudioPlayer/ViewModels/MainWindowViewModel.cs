@@ -1,40 +1,25 @@
 ﻿using System;
+using System.Reactive.Linq;
 using System.Windows.Controls;
-using System.Windows.Input;
-using HandyControl.Tools.Command;
-using PhazaAudioPlayer.Infrastructure.Interfaces;
-using PhazaAudioPlayer.Infrastructure.Providers;
-using PhazaAudioPlayer.Views.Contents;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using static PhazaAudioPlayer.ViewModels.SideMenuViewModel;
 
 namespace PhazaAudioPlayer.ViewModels;
 
 public class MainWindowViewModel : ReactiveObject
 {
     [Reactive] public UserControl Content { get; set; }
-    [Reactive] public ICommand SwitchContentCommand { get; set; }
 
-    private readonly IProviderOf<UserControl> _contentProvider;
+    private readonly SideMenuViewModel _sideMenuViewModel = Kernel.Get<SideMenuViewModel>();
 
     public MainWindowViewModel()
     {
-        _contentProvider = new ContentProvider();
+        var switchObserver = Observable
+            .FromEvent<ContentSwitchedHandler, UserControl>(
+            addHandler => _sideMenuViewModel.ContentSwitched += addHandler,
+            removeHandler => _sideMenuViewModel.ContentSwitched -= removeHandler);
 
-        Content = _contentProvider.Get<MainContent>();
-        SwitchContentCommand = new RelayCommand(SwitchContent);
-    }
-
-    private void SwitchContent(object args)
-    {
-        if (args is not Type contentType)
-        {
-            return;
-        }
-
-        if (contentType.IsAssignableTo(typeof(UserControl)))
-        {
-            Content = _contentProvider.Get(contentType);
-        }
+        switchObserver.Subscribe(content => Content = content);
     }
 }

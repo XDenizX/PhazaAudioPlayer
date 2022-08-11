@@ -41,9 +41,7 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
-        <userControls:SideMenuUserControl
-            Grid.Column="0"
-            Grid.Row="0"/>
+        <userControls:SideMenuUserControl/>
 
         <Grid
             Grid.Row="0"

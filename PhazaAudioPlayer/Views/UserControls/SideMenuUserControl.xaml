@@ -5,10 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:contents="clr-namespace:PhazaAudioPlayer.Views.Contents"
              xmlns:local="clr-namespace:PhazaAudioPlayer.Views.UserControls"
-             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:hc="https://handyorg.github.io/handycontrol" 
+             xmlns:viewmodels="clr-namespace:PhazaAudioPlayer.ViewModels"
              mc:Ignorable="d" 
              d:DesignWidth="300">
-    
+
     <hc:SideMenu 
             Grid.Row="0"
             Grid.Column="0"

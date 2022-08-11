@@ -10,7 +10,7 @@
              d:DesignHeight="400" d:DesignWidth="600">
 
     <UserControl.DataContext>
-        <viewModels:FilesUserControlViewModel/>
+        <viewModels:UserFilesContentViewModel/>
     </UserControl.DataContext>
 
     <UserControl.CommandBindings>

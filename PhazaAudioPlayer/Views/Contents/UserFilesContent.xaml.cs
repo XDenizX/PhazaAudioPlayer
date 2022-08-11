@@ -5,19 +5,19 @@ using System.Windows.Input;
 
 namespace PhazaAudioPlayer.Views.Contents;
 
-public partial class UserFilesContent : UserControl, IViewFor<FilesUserControlViewModel>
+public partial class UserFilesContent : UserControl, IViewFor<UserFilesContentViewModel>
 {
     #region ViewModel
-    public FilesUserControlViewModel? ViewModel
+    public UserFilesContentViewModel? ViewModel
     { 
-        get => DataContext as FilesUserControlViewModel;
+        get => DataContext as UserFilesContentViewModel;
         set => DataContext = value;
     }
 
     object? IViewFor.ViewModel 
     { 
         get => ViewModel;
-        set => ViewModel = (FilesUserControlViewModel) value;
+        set => ViewModel = (UserFilesContentViewModel) value;
     }
     #endregion
 

@@ -10,7 +10,7 @@
              d:DesignHeight="700" d:DesignWidth="1000">
 
     <UserControl.DataContext>
-        <viewModels:MainUserControlViewModel/>
+        <viewModels:MainContentViewModel/>
     </UserControl.DataContext>
 
     <Grid>
