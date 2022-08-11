@@ -16,7 +16,7 @@ using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 
 namespace PhazaAudioPlayer.ViewModels;
 
-public class FilesUserControlViewModel : ReactiveObject
+public class UserFilesContentViewModel : ReactiveObject
 {
     [Reactive] public ObservableCollection<TrackViewModel> UserTracks { get; set; } = new();
 
@@ -28,7 +28,7 @@ public class FilesUserControlViewModel : ReactiveObject
 
     private readonly PlaybackService _playbackService = Kernel.Get<PlaybackService>();
 
-    public FilesUserControlViewModel()
+    public UserFilesContentViewModel()
     {
         AddDirectoryCommand = ReactiveCommand.Create(GetTracksFromDirectory);
         AddFilesCommand = ReactiveCommand.Create(GetTracks);

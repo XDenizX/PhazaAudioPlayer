@@ -9,11 +9,11 @@ using ReactiveUI.Fody.Helpers;
 
 namespace PhazaAudioPlayer.ViewModels;
 
-public class MainUserControlViewModel : ReactiveObject
+public class MainContentViewModel : ReactiveObject
 {
     [Reactive] public ObservableCollection<PlaylistViewModel> Playlists { get; set; }
 
-    public MainUserControlViewModel()
+    public MainContentViewModel()
     {
         Playlists = new ObservableCollection<PlaylistViewModel>();
 
