@@ -1,134 +1,136 @@
-﻿<UserControl x:Class="PhazaAudioPlayer.Views.UserControls.SideMenuUserControl"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:contents="clr-namespace:PhazaAudioPlayer.Views.Contents"
-             xmlns:local="clr-namespace:PhazaAudioPlayer.Views.UserControls"
-             xmlns:hc="https://handyorg.github.io/handycontrol" 
-             xmlns:viewmodels="clr-namespace:PhazaAudioPlayer.ViewModels"
-             mc:Ignorable="d" 
-             d:DesignWidth="300">
+﻿<UserControl
+    x:Class="PhazaAudioPlayer.Views.UserControls.SideMenuUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:contents="clr-namespace:PhazaAudioPlayer.Views.Contents"
+    xmlns:local="clr-namespace:PhazaAudioPlayer.Views.UserControls"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:viewmodels="clr-namespace:PhazaAudioPlayer.ViewModels"
+    mc:Ignorable="d"
+    d:DesignWidth="300">
 
-    <hc:SideMenu 
-            Grid.Row="0"
-            Grid.Column="0"
-            ExpandMode="ShowAll"
-            SubSideBrush="CornflowerBlue"
-            SideBrush="DodgerBlue"
-            AutoSelect="True">
+    <hc:SideMenu
+        Grid.Row="0"
+        Grid.Column="0"
+        ExpandMode="ShowAll"
+        SubSideBrush="CornflowerBlue"
+        SideBrush="DodgerBlue"
+        AutoSelect="True">
 
-        <hc:SideMenuItem 
-                Header="Главная"
-                Command="{Binding SwitchContentCommand}"
-                CommandParameter="{x:Type contents:MainContent}">
+        <hc:SideMenuItem
+            Header="Главная"
+            Command="{Binding SwitchContentCommand}"
+            CommandParameter="{x:Type contents:MainContent}">
             <hc:SideMenuItem.Icon>
-                <Image 
-                    Source="{StaticResource MainImage}" 
-                    Width="24" 
-                    Height="24"/>
+                <Image
+                    Source="{StaticResource MainImage}"
+                    Width="24"
+                    Height="24" />
             </hc:SideMenuItem.Icon>
         </hc:SideMenuItem>
 
-        <hc:SideMenuItem 
-                Header="Моя музыка">
+        <hc:SideMenuItem
+            Header="Моя музыка">
 
-            <hc:SideMenuItem 
-                    Header="Треки"
-                    IsEnabled="False">
+            <hc:SideMenuItem
+                Header="Треки"
+                IsEnabled="False">
                 <hc:SideMenuItem.Icon>
-                    <Image 
+                    <Image
                         Source="{StaticResource TrackImage}"
-                        Width="24" 
-                        Height="24"/>
+                        Width="24"
+                        Height="24" />
                 </hc:SideMenuItem.Icon>
             </hc:SideMenuItem>
 
-            <hc:SideMenuItem 
-                    Header="Альбомы"
-                    IsEnabled="False">
+            <hc:SideMenuItem
+                Header="Альбомы"
+                IsEnabled="False">
                 <hc:SideMenuItem.Icon>
-                    <Image 
+                    <Image
                         Source="{StaticResource AlbumImage}"
-                        Width="24" 
-                        Height="24"/>
+                        Width="24"
+                        Height="24" />
                 </hc:SideMenuItem.Icon>
             </hc:SideMenuItem>
 
-            <hc:SideMenuItem 
-                    Header="Исполнители"
-                    IsEnabled="False">
+            <hc:SideMenuItem
+                Header="Исполнители"
+                IsEnabled="False">
                 <hc:SideMenuItem.Icon>
-                    <Image 
+                    <Image
                         Source="{StaticResource ArtistImage}"
-                        Width="24" 
-                        Height="24"/>
+                        Width="24"
+                        Height="24" />
                 </hc:SideMenuItem.Icon>
             </hc:SideMenuItem>
 
-            <hc:SideMenuItem 
-                    Header="Плейлист"
-                    IsEnabled="False">
+            <hc:SideMenuItem
+                Header="Плейлист"
+                IsEnabled="False">
                 <hc:SideMenuItem.Icon>
-                    <Image 
+                    <Image
                         Source="{StaticResource PlaylistImage}"
-                        Width="24" 
-                        Height="24"/>
+                        Width="24"
+                        Height="24" />
                 </hc:SideMenuItem.Icon>
             </hc:SideMenuItem>
 
-            <hc:SideMenuItem 
-                    Header="Мои файлы"
-                    Command="{Binding SwitchContentCommand}"
-                    CommandParameter="{x:Type contents:UserFilesContent}">
+            <hc:SideMenuItem
+                Header="Мои файлы"
+                Command="{Binding SwitchContentCommand}"
+                CommandParameter="{x:Type contents:UserFilesContent}">
                 <hc:SideMenuItem.Icon>
-                    <Image 
+                    <Image
                         Source="{StaticResource FilesImage}"
-                        Width="24" 
-                        Height="24"/>
+                        Width="24"
+                        Height="24" />
                 </hc:SideMenuItem.Icon>
             </hc:SideMenuItem>
         </hc:SideMenuItem>
 
-        <hc:SideMenuItem Header="Настройки">
+        <hc:SideMenuItem
+            Header="Настройки">
 
-            <hc:SideMenuItem 
-                    Header="Приложение"
-                    Command="{Binding SwitchContentCommand}"
-                    CommandParameter="{x:Type contents:SettingsContent}">
+            <hc:SideMenuItem
+                Header="Приложение"
+                Command="{Binding SwitchContentCommand}"
+                CommandParameter="{x:Type contents:SettingsContent}">
                 <hc:SideMenuItem.Icon>
-                    <Image 
+                    <Image
                         Source="{StaticResource SettingsImage}"
-                        Width="24" 
-                        Height="24"/>
+                        Width="24"
+                        Height="24" />
                 </hc:SideMenuItem.Icon>
             </hc:SideMenuItem>
 
-            <hc:SideMenuItem 
-                    Header="Профиль"
-                    Command="{Binding SwitchContentCommand}"
-                    CommandParameter="{x:Type contents:ProfileContent}">
+            <hc:SideMenuItem
+                Header="Профиль"
+                Command="{Binding SwitchContentCommand}"
+                CommandParameter="{x:Type contents:ProfileContent}">
                 <hc:SideMenuItem.Icon>
-                    <Image 
+                    <Image
                         Source="{StaticResource UserImage}"
-                        Width="24" 
-                        Height="24"/>
+                        Width="24"
+                        Height="24" />
                 </hc:SideMenuItem.Icon>
             </hc:SideMenuItem>
 
-            <hc:SideMenuItem 
-                    Header="О программе"
-                    Command="{Binding SwitchContentCommand}"
-                    CommandParameter="{x:Type contents:AboutContent}">
+            <hc:SideMenuItem
+                Header="О программе"
+                Command="{Binding SwitchContentCommand}"
+                CommandParameter="{x:Type contents:AboutContent}">
                 <hc:SideMenuItem.Icon>
-                    <Image 
+                    <Image
                         Source="{StaticResource InfoImage}"
-                        Width="24" 
-                        Height="24"/>
+                        Width="24"
+                        Height="24" />
                 </hc:SideMenuItem.Icon>
             </hc:SideMenuItem>
         </hc:SideMenuItem>
 
     </hc:SideMenu>
-    
+
 </UserControl>

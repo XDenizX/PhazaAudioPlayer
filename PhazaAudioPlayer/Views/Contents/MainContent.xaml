@@ -1,16 +1,18 @@
-﻿<UserControl x:Class="PhazaAudioPlayer.Views.Contents.MainContent"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:PhazaAudioPlayer.Views.Contents"
-             xmlns:hc="https://handyorg.github.io/handycontrol"
-             xmlns:viewModels="clr-namespace:PhazaAudioPlayer.ViewModels"
-             mc:Ignorable="d"
-             d:DesignHeight="700" d:DesignWidth="1000">
+﻿<UserControl
+    x:Class="PhazaAudioPlayer.Views.Contents.MainContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:PhazaAudioPlayer.Views.Contents"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:viewModels="clr-namespace:PhazaAudioPlayer.ViewModels"
+    mc:Ignorable="d"
+    d:DesignHeight="700"
+    d:DesignWidth="1000">
 
     <UserControl.DataContext>
-        <viewModels:MainContentViewModel/>
+        <viewModels:MainContentViewModel />
     </UserControl.DataContext>
 
     <Grid>
@@ -30,17 +32,19 @@
                         <Grid>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="60"/>
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="60" />
                             </Grid.RowDefinitions>
 
                             <Grid>
 
-                                <Image 
+                                <Image
                                     Grid.Row="0"
                                     Style="{StaticResource PlaylistImageStyle}"
                                     Source="{Binding ImageSource}"
-                                    Stretch="Fill"/>
+                                    Stretch="Fill" />
 
                                 <Border
                                     x:Name="PlaylistControlPanel"
@@ -54,11 +58,12 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center">
 
-                                        <Button Width="64"
-                                                Height="64"
-                                                Margin="5, 0"
-                                                Template="{StaticResource PlayButtonTemplate}"
-                                                ToolTip="Слушать"/>
+                                        <Button
+                                            Width="64"
+                                            Height="64"
+                                            Margin="5, 0"
+                                            Template="{StaticResource PlayButtonTemplate}"
+                                            ToolTip="Слушать" />
 
                                     </StackPanel>
 
@@ -73,14 +78,14 @@
                                     TextAlignment="Center"
                                     Margin="0,10,0,0"
                                     VerticalAlignment="Center"
-                                    FontWeight="Heavy"/>
+                                    FontWeight="Heavy" />
 
                                 <TextBlock
                                     Text="{Binding Artist}"
                                     TextAlignment="Center"
                                     Margin="5"
                                     VerticalAlignment="Center"
-                                    FontWeight="Medium"/>
+                                    FontWeight="Medium" />
 
                             </StackPanel>
                         </Grid>
@@ -91,7 +96,7 @@
             </hc:CoverView>
 
         </hc:ScrollViewer>
-        
+
         <hc:GotoTop
             Animated="True"
             AutoHiding="True"
@@ -101,8 +106,8 @@
             VerticalAlignment="Bottom"
             Margin="0,0,40,20"
             ToolTip="Вверх!"
-            HidingHeight="400"/>
+            HidingHeight="400" />
 
     </Grid>
-    
+
 </UserControl>

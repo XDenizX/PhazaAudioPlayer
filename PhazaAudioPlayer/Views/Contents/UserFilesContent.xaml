@@ -1,50 +1,58 @@
-﻿<UserControl x:Class="PhazaAudioPlayer.Views.Contents.UserFilesContent"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:hc="https://handyorg.github.io/handycontrol"
-             xmlns:local="clr-namespace:PhazaAudioPlayer.Views.Contents"
-             xmlns:viewModels="clr-namespace:PhazaAudioPlayer.ViewModels"
-             mc:Ignorable="d"
-             d:DesignHeight="400" d:DesignWidth="600">
+﻿<UserControl
+    x:Class="PhazaAudioPlayer.Views.Contents.UserFilesContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:PhazaAudioPlayer.Views.Contents"
+    xmlns:viewModels="clr-namespace:PhazaAudioPlayer.ViewModels"
+    mc:Ignorable="d"
+    d:DesignHeight="400"
+    d:DesignWidth="600">
 
     <UserControl.DataContext>
-        <viewModels:UserFilesContentViewModel/>
+        <viewModels:UserFilesContentViewModel />
     </UserControl.DataContext>
 
     <UserControl.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.Delete" Executed="RemoveTrack"/>
-        <CommandBinding Command="MediaCommands.Play" Executed="PlayTrack"/>
+        <CommandBinding
+            Command="ApplicationCommands.Delete"
+            Executed="RemoveTrack" />
+        <CommandBinding
+            Command="MediaCommands.Play"
+            Executed="PlayTrack" />
     </UserControl.CommandBindings>
-    
+
     <Grid>
-        
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="96"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition
+                Height="96" />
+            <RowDefinition
+                Height="*" />
         </Grid.RowDefinitions>
-        
+
         <StackPanel
             Grid.Row="0"
             Orientation="Horizontal"
             Margin="5, 5">
-            
-            <Button 
+
+            <Button
                 ToolTip="Добавить каталог с аудиофайлами"
                 Margin="30,10,10,10"
                 Width="48"
                 Height="48"
                 Template="{StaticResource AddFolderButtonTemplate}"
-                Command="{Binding AddDirectoryCommand}"/>
+                Command="{Binding AddDirectoryCommand}" />
 
-            <Button 
+            <Button
                 ToolTip="Добавить аудиофайлы"
                 Margin="10"
                 Width="48"
                 Height="48"
                 Template="{StaticResource AddFileButtonTemplate}"
-                Command="{Binding AddFilesCommand}"/>
+                Command="{Binding AddFilesCommand}" />
 
             <Button
                 ToolTip="Обновить музыку"
@@ -52,8 +60,8 @@
                 Width="48"
                 Height="48"
                 Template="{StaticResource RefreshButtonTemplate}"
-                Command="{Binding RefreshDirectoriesCommand}"/>
-            
+                Command="{Binding RefreshDirectoriesCommand}" />
+
         </StackPanel>
 
         <ItemsControl
@@ -66,28 +74,28 @@
 
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <VirtualizingStackPanel 
-                        Orientation="Vertical"/>
+                    <VirtualizingStackPanel
+                        Orientation="Vertical" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 
             <ItemsControl.Template>
 
                 <ControlTemplate>
-                    <hc:ToggleBlock 
-                        VerticalContentAlignment="Stretch" 
+                    <hc:ToggleBlock
+                        VerticalContentAlignment="Stretch"
                         HorizontalContentAlignment="Stretch"
                         IsChecked="{Binding ElementName=UserTracksControl, Path=HasItems, Mode=OneWay}">
 
                         <hc:ToggleBlock.CheckedContent>
                             <hc:ScrollViewer
                                 CanContentScroll="True">
-                                <ItemsPresenter/>
+                                <ItemsPresenter />
                             </hc:ScrollViewer>
                         </hc:ToggleBlock.CheckedContent>
 
                         <hc:ToggleBlock.UnCheckedContent>
-                            <StackPanel 
+                            <StackPanel
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center">
 
@@ -108,13 +116,13 @@
                                             <Path.RenderTransform>
                                                 <ScaleTransform
                                                     ScaleX="3"
-                                                    ScaleY="3"/>
+                                                    ScaleY="3" />
                                             </Path.RenderTransform>
-                                            
+
                                         </Path>
                                     </hc:Empty.Logo>
 
-                                 </hc:Empty>
+                                </hc:Empty>
 
                                 <Button
                                     Margin="10"
@@ -123,11 +131,11 @@
                                     Width="120"
                                     FontSize="18"
                                     FontWeight="Medium"
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.AddFilesCommand}"/>
-                                
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.AddFilesCommand}" />
+
                             </StackPanel>
                         </hc:ToggleBlock.UnCheckedContent>
-                        
+
                     </hc:ToggleBlock>
                 </ControlTemplate>
 
@@ -141,46 +149,48 @@
 
                         <Grid.Triggers>
 
-                            <EventTrigger RoutedEvent="MouseEnter">
+                            <EventTrigger
+                                RoutedEvent="MouseEnter">
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
-                                                To="1"
-                                                Storyboard.TargetName="PlayButton"
-                                                Storyboard.TargetProperty="Opacity" 
-                                                Duration="0:0:0.1"/>
+                                            To="1"
+                                            Storyboard.TargetName="PlayButton"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.1" />
                                         <DoubleAnimation
-                                                To="1"
-                                                Storyboard.TargetName="RemoveButton"
-                                                Storyboard.TargetProperty="Opacity" 
-                                                Duration="0:0:0.1"/>
+                                            To="1"
+                                            Storyboard.TargetName="RemoveButton"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.1" />
                                         <DoubleAnimation
-                                                To="0"
-                                                Storyboard.TargetName="TrackImage"
-                                                Storyboard.TargetProperty="Opacity" 
-                                                Duration="0:0:0.1"/>
+                                            To="0"
+                                            Storyboard.TargetName="TrackImage"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.1" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
 
-                            <EventTrigger RoutedEvent="MouseLeave">
+                            <EventTrigger
+                                RoutedEvent="MouseLeave">
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
-                                                To="0"
-                                                Storyboard.TargetName="PlayButton"
-                                                Storyboard.TargetProperty="Opacity" 
-                                                Duration="0:0:0.2"/>
+                                            To="0"
+                                            Storyboard.TargetName="PlayButton"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.2" />
                                         <DoubleAnimation
-                                                To="0"
-                                                Storyboard.TargetName="RemoveButton"
-                                                Storyboard.TargetProperty="Opacity" 
-                                                Duration="0:0:0.2"/>
+                                            To="0"
+                                            Storyboard.TargetName="RemoveButton"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.2" />
                                         <DoubleAnimation
-                                                To="1"
-                                                Storyboard.TargetName="TrackImage"
-                                                Storyboard.TargetProperty="Opacity" 
-                                                Duration="0:0:0.2"/>
+                                            To="1"
+                                            Storyboard.TargetName="TrackImage"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -188,9 +198,12 @@
                         </Grid.Triggers>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition
+                                Width="Auto" />
+                            <ColumnDefinition
+                                Width="*" />
+                            <ColumnDefinition
+                                Width="Auto" />
                         </Grid.ColumnDefinitions>
 
                         <Image
@@ -198,9 +211,9 @@
                             Source="{StaticResource TrackImage}"
                             Width="24"
                             Height="24"
-                            Margin="5"/>
+                            Margin="5" />
 
-                        <Button 
+                        <Button
                             x:Name="PlayButton"
                             Grid.Column="0"
                             Margin="20,5,20,5"
@@ -210,15 +223,15 @@
                             VerticalAlignment="Center"
                             Command="{x:Static MediaCommands.Play}"
                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext}"
-                            Template="{StaticResource PlayButtonTemplate}"/>
+                            Template="{StaticResource PlayButtonTemplate}" />
 
-                        <TextBlock 
+                        <TextBlock
                             Grid.Column="1"
                             Margin="5"
                             Text="{Binding Name}"
                             VerticalAlignment="Center"
                             FontSize="16"
-                            FontWeight="Normal"/>
+                            FontWeight="Normal" />
 
                         <Button
                             x:Name="RemoveButton"
@@ -230,7 +243,7 @@
                             Height="32"
                             Template="{StaticResource DeleteButtonTemplate}"
                             Command="{x:Static ApplicationCommands.Delete}"
-                            CommandParameter="{Binding Path=DataContext, RelativeSource={RelativeSource Mode=Self}}"/>
+                            CommandParameter="{Binding Path=DataContext, RelativeSource={RelativeSource Mode=Self}}" />
 
                     </Grid>
 
