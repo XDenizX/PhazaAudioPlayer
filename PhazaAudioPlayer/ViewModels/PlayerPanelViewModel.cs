@@ -13,7 +13,7 @@ namespace PhazaAudioPlayer.ViewModels
         private readonly MediaPlayer _mediaPlayer = new();
 
         [Reactive] public TrackViewModel CurrentTrack { get; set; }
-        [Reactive] public float Volume { get; set; }
+        [Reactive] public float Volume { get; set; } = 50;
         [Reactive] public double Position { get; set; }
         [Reactive] public bool IsPlaying { get; set; }
         [Reactive] public ObservableCollection<TrackViewModel> Query { get; set; }
