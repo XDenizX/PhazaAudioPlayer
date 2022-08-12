@@ -3,7 +3,6 @@ using PhazaAudioPlayer.Infrastructure.Providers;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
-using System.Net.Mime;
 using System.Reactive;
 using System.Windows.Controls;
 
@@ -22,8 +21,7 @@ namespace PhazaAudioPlayer.ViewModels
 
         public SideMenuViewModel()
         {
-            SwitchContentCommand = ReactiveCommand
-                .Create<Type>(contentType => SwitchContent(contentType));
+            SwitchContentCommand = ReactiveCommand.Create<Type>(SwitchContent);
         }
 
         private void SwitchContent(Type contentType)
