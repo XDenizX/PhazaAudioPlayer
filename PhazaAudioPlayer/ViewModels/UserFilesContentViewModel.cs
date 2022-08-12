@@ -1,6 +1,5 @@
 ﻿using DynamicData;
 using HandyControl.Tools.Command;
-using PhazaAudioPlayer.Services;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
@@ -26,7 +25,7 @@ public class UserFilesContentViewModel : ReactiveObject
 
     [Reactive] public ICommand PlayTrackCommand { get; set; }
 
-    private readonly PlaybackService _playbackService = Kernel.Get<PlaybackService>();
+    private readonly PlayerPanelViewModel _playerPanelViewModel = Kernel.Get<PlayerPanelViewModel>();
 
     public UserFilesContentViewModel()
     {
@@ -64,7 +63,7 @@ public class UserFilesContentViewModel : ReactiveObject
 
         var tracks = openFileDialog.FileNames.Select(filename => new TrackViewModel
         {
-            Path = filename,
+            Path = new Uri(filename),
             Name = Path.GetFileNameWithoutExtension(filename)
         });
 
@@ -89,7 +88,7 @@ public class UserFilesContentViewModel : ReactiveObject
 
         var tracks = files.Select(filename => new TrackViewModel
         {
-            Path = filename,
+            Path = new Uri(filename),
             Name = Path.GetFileNameWithoutExtension(filename)
         });
 
@@ -104,6 +103,7 @@ public class UserFilesContentViewModel : ReactiveObject
 
     private void PlayTrack(TrackViewModel track)
     {
-        
+        _playerPanelViewModel.CurrentTrack = track;
+        _playerPanelViewModel.PlayCommand.Execute(track).Subscribe();
     }
 }
