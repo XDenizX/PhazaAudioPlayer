@@ -11,7 +11,7 @@ namespace PhazaAudioPlayer
         {
             if (_kernel == null)
             {
-                _kernel = new StandardKernel(new BindModule());
+                _kernel = new StandardKernel(new ViewModelsBindModule());
             }
 
             return _kernel.Get<T>();
