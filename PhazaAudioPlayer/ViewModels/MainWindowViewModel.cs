@@ -3,6 +3,7 @@ using System.Reactive.Linq;
 using System.Windows.Controls;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using ReactiveMarbles.ObservableEvents;
 using static PhazaAudioPlayer.ViewModels.SideMenuViewModel;
 
 namespace PhazaAudioPlayer.ViewModels;
@@ -15,11 +16,8 @@ public class MainWindowViewModel : ReactiveObject
 
     public MainWindowViewModel()
     {
-        var switchObserver = Observable
-            .FromEvent<ContentSwitchedHandler, UserControl>(
-            addHandler => _sideMenuViewModel.ContentSwitched += addHandler,
-            removeHandler => _sideMenuViewModel.ContentSwitched -= removeHandler);
+        var switchObservable = _sideMenuViewModel.Events().ContentSwitched;
 
-        switchObserver.Subscribe(content => Content = content);
+        switchObservable.Subscribe(content => Content = content);
     }
 }
