@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Media;
+using ReactiveMarbles.ObservableEvents;
 
 namespace PhazaAudioPlayer.ViewModels
 {
@@ -17,6 +18,7 @@ namespace PhazaAudioPlayer.ViewModels
         [Reactive] public double Position { get; set; }
         [Reactive] public bool IsPlaying { get; set; }
         [Reactive] public ObservableCollection<TrackViewModel> Query { get; set; }
+        [Reactive] public double Duration { get; set; }
 
         [Reactive] public ReactiveCommand<TrackViewModel, Unit> PlayCommand { get; set; }
 
@@ -36,6 +38,17 @@ namespace PhazaAudioPlayer.ViewModels
             var positionSubscribe = this
                 .WhenAnyValue(x => x.Position)
                 .Subscribe(x => _mediaPlayer.Position = TimeSpan.FromSeconds(x));
+
+            var mediaOpenObservable = _mediaPlayer.Events().MediaOpened;
+
+            var mediaOpenSubscribe = mediaOpenObservable
+                .Subscribe(x =>
+                {
+                    if (_mediaPlayer.NaturalDuration.HasTimeSpan)
+                    {
+                        Duration = _mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+                    }
+                });
 
             PlayCommand = ReactiveCommand.Create<TrackViewModel>(Play);
         }

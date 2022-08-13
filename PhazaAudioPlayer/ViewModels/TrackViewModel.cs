@@ -14,7 +14,6 @@ public class TrackViewModel : ReactiveObject
     [Reactive] public bool IsPlaying { get; set; }
     [Reactive] public bool IsLiked { get; set; }
     [Reactive] public Uri ImageUri { get; set; }
-    [Reactive] public double Duration { get; set; } = 100;
     [Reactive] public ImageSource Image { get; private set; }
 
     public TrackViewModel()
