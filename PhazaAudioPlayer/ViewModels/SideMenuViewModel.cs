@@ -1,5 +1,6 @@
 ﻿using PhazaAudioPlayer.Infrastructure.Interfaces;
 using PhazaAudioPlayer.Infrastructure.Providers;
+using PhazaAudioPlayer.Views.Contents;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
@@ -13,6 +14,8 @@ namespace PhazaAudioPlayer.ViewModels
         [Reactive] public ReactiveCommand<Type, Unit> SwitchContentCommand { get; set; }
 
         private readonly IProviderOf<UserControl> _contentProvider = new ContentProvider();
+
+        public UserControl DefaultContent => _contentProvider.Get<MainContent>();
 
         public UserControl CurrentContent { get; private set; }
 

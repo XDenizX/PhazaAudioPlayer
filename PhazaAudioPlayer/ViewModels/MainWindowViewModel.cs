@@ -16,6 +16,8 @@ public class MainWindowViewModel : ReactiveObject
 
     public MainWindowViewModel()
     {
+        Content = _sideMenuViewModel.DefaultContent;
+
         var switchObservable = _sideMenuViewModel.Events().ContentSwitched;
 
         switchObservable.Subscribe(content => Content = content);
