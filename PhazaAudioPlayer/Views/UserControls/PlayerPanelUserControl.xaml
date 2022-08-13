@@ -48,9 +48,9 @@
                 Grid.Column="0"
                 Text="{Binding Position, Converter={StaticResource DoubleToTimeConverter}}"
                 Margin="5"
-                Width="35"
+                Width="40"
                 HorizontalAlignment="Center"
-                TextAlignment="Center" />
+                TextAlignment="Right" />
 
             <hc:PreviewSlider
                 Grid.Column="1"
@@ -58,7 +58,7 @@
                 hc:TipElement.Placement="TopRight"
                 Margin="0, 3"
                 IsMoveToPointEnabled="True"
-                Maximum="{Binding CurrentTrack.Duration}"
+                Maximum="{Binding Duration}"
                 Background="{StaticResource DefaultBrush}"
                 IsSelectionRangeEnabled="True"
                 PreviewContentOffset="4"
@@ -73,11 +73,11 @@
 
             <TextBlock
                 Grid.Column="2"
-                Text="{Binding CurrentTrack.Duration, Converter={StaticResource DoubleToTimeConverter}}"
+                Text="{Binding Duration, Converter={StaticResource DoubleToTimeConverter}}"
                 Margin="5"
-                Width="35"
+                Width="40"
                 HorizontalAlignment="Center"
-                TextAlignment="Center" />
+                TextAlignment="Left" />
 
         </Grid>
 
