@@ -86,8 +86,10 @@
             Grid.Column="0"
             Orientation="Horizontal">
 
-            <hc:Gravatar
-                Margin="5,0,5,0" 
+            <Image
+                Margin="5"
+                Width="100"
+                Height="Auto"
                 Source="{Binding CurrentTrack.Image}" />
 
             <StackPanel
