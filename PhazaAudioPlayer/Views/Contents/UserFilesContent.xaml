@@ -208,7 +208,7 @@
 
                         <Image
                             x:Name="TrackImage"
-                            Source="{StaticResource TrackImage}"
+                            Source="{Binding Image}"
                             Width="24"
                             Height="24"
                             Margin="5" />
