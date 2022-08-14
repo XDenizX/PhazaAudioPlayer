@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using ReactiveUI;
@@ -16,10 +17,23 @@ public class TrackViewModel : ReactiveObject
     [Reactive] public Uri ImageUri { get; set; }
     [Reactive] public ImageSource Image { get; private set; }
 
+    private readonly ResourceDictionary _resources = new();
+
     public TrackViewModel()
     {
-        var imageUriObserver = this.WhenAnyValue(x => x.ImageUri)
-            .WhereNotNull()
-            .Subscribe(uri => Image = new BitmapImage(uri));
+        _resources.Source = new Uri("pack://application:,,,/Resources/Images.xaml");
+
+        var imageUriObservable= this.WhenAnyValue(x => x.ImageUri)
+            .Subscribe(uri =>
+            {
+                try
+                {
+                    Image = new BitmapImage(uri);
+                }
+                catch
+                {
+                    Image = (DrawingImage) _resources["TrackImage"];
+                }
+            });
     }
 }
