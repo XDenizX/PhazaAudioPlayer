@@ -187,4 +187,14 @@
         </DrawingImage.Drawing>
     </DrawingImage>
 
+    <DrawingImage
+        x:Key="FilledHeartImage">
+        <DrawingImage.Drawing>
+            <GeometryDrawing
+                Brush="#D32121"
+                Pen="{x:Null}"
+                Geometry="{StaticResource FilledHeartGeometry}" />
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
 </ResourceDictionary>
