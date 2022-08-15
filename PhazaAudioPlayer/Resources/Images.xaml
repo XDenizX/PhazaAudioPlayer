@@ -197,4 +197,14 @@
         </DrawingImage.Drawing>
     </DrawingImage>
 
+    <DrawingImage
+        x:Key="MuteImage">
+        <DrawingImage.Drawing>
+            <GeometryDrawing
+                Brush="#FFFFFFFF"
+                Pen="{x:Null}"
+                Geometry="{StaticResource MuteGeometry}" />
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
 </ResourceDictionary>
