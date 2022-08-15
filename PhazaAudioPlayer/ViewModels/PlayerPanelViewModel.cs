@@ -17,6 +17,7 @@ namespace PhazaAudioPlayer.ViewModels
         [Reactive] public float Volume { get; set; } = 50;
         [Reactive] public double Position { get; set; }
         [Reactive] public bool IsPlaying { get; set; }
+        [Reactive] public bool IsMuted { get; set; }
         [Reactive] public ObservableCollection<TrackViewModel> Query { get; set; }
         [Reactive] public double Duration { get; set; }
 
@@ -49,6 +50,10 @@ namespace PhazaAudioPlayer.ViewModels
                         Duration = _mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
                     }
                 });
+
+            var isMutedObservable = this
+                .WhenAnyValue(x => x.IsMuted)
+                .Subscribe(isMuted => _mediaPlayer.IsMuted = isMuted);
 
             PlayCommand = ReactiveCommand.Create<TrackViewModel>(Play);
         }

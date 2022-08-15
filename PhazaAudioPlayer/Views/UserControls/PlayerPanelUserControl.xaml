@@ -193,12 +193,17 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Center">
 
-            <Button
+            <ToggleButton
+                IsChecked="{Binding IsMuted}"
                 MinWidth="30"
                 MinHeight="30"
                 Margin="3, 0"
                 Template="{StaticResource VolumeButtonTemplate}"
-                ToolTip="Громкость" />
+                ToolTip="Громкость">
+                
+                
+                
+            </ToggleButton>
 
             <hc:PreviewSlider
                 Width="100"
