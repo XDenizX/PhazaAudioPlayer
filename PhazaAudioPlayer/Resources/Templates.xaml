@@ -306,5 +306,14 @@
 
         </Grid>
     </ControlTemplate>
-    
+
+    <ControlTemplate
+        x:Key="FilledHeartButtonTemplate">
+        <Grid>
+            <Image
+                Margin="10"
+                Source="{StaticResource FilledHeartImage}" />
+        </Grid>
+    </ControlTemplate>
+
 </ResourceDictionary>
