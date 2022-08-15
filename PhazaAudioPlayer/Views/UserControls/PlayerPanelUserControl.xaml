@@ -110,26 +110,97 @@
 
             </StackPanel>
 
-            <Button
-                MinWidth="40"
-                MinHeight="40"
-                Margin="3"
-                Template="{StaticResource HeartButtonTemplate}"
+            <ToggleButton
+                IsChecked="{Binding CurrentTrack.IsLiked}"
                 ToolTip="Нравится"
-                hc:FloatingBlock.Duration="0:0:0.4"
-                hc:FloatingBlock.VerticalOffset="-15"
-                hc:FloatingBlock.ToX="30"
-                hc:FloatingBlock.ToY="-30">
+                hc:StatusSwitchElement.HideUncheckedElement="True"
+                hc:FloatingBlock.Duration="0:0:0.4">
 
-                <hc:FloatingBlock.ContentTemplate>
-                    <DataTemplate>
-                        <Path
-                            Data="{StaticResource FilledHeartGeometry}"
-                            Fill="#D32121" />
-                    </DataTemplate>
-                </hc:FloatingBlock.ContentTemplate>
+                <ToggleButton.Style>
+                    <Style
+                        TargetType="{x:Type ToggleButton}"
+                        BasedOn="{StaticResource ToggleButtonFlip}">
 
-            </Button>
+                        <Setter 
+                            Property="BorderBrush"
+                            Value="{x:Null}"/>
+
+                        <Setter
+                            Property="hc:FloatingBlock.ToY"
+                            Value="-30" />
+
+                        <Setter
+                            Property="hc:FloatingBlock.ToX"
+                            Value="30" />
+
+                        <Setter
+                            Property="hc:FloatingBlock.VerticalOffset"
+                            Value="-15" />
+
+                        <Setter
+                            Property="hc:FloatingBlock.ContentTemplate">
+                            <Setter.Value>
+                                <DataTemplate>
+                                    <Path
+                                        Data="{StaticResource FilledHeartGeometry}"
+                                        Fill="#D32121" />
+                                </DataTemplate>
+                            </Setter.Value>
+                        </Setter>
+
+                        <Style.Triggers>
+                            <DataTrigger
+                                Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsChecked}"
+                                Value="True">
+
+                                <Setter
+                                    Property="hc:FloatingBlock.ToY"
+                                    Value="20" />
+
+                                <Setter
+                                    Property="hc:FloatingBlock.ToX"
+                                    Value="-30" />
+
+                                <Setter
+                                    Property="hc:FloatingBlock.VerticalOffset"
+                                    Value="-5" />
+
+                                <Setter
+                                    Property="hc:FloatingBlock.HorizontalOffset"
+                                    Value="-25" />
+
+                                <Setter
+                                    Property="hc:FloatingBlock.ContentTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <Path
+                                                Data="{StaticResource BrokenHeartGeometry}"
+                                                Fill="#AA555555" />
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+
+                            </DataTrigger>
+                        </Style.Triggers>
+
+                    </Style>
+                </ToggleButton.Style>
+
+                <hc:StatusSwitchElement.CheckedElement>
+                    <Image
+                        Width="20"
+                        Height="20"
+                        Margin="3"
+                        Source="{StaticResource FilledHeartImage}" />
+                </hc:StatusSwitchElement.CheckedElement>
+
+                <Image
+                    Width="20"
+                    Height="20"
+                    Margin="3"
+                    Source="{StaticResource HeartImage}"/>
+
+            </ToggleButton>
 
             <Button
                 MinWidth="40"
