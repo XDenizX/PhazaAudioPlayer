@@ -12,7 +12,8 @@
     d:DesignWidth="1000"
     d:DataContext="{d:DesignInstance viewmodels:PlayerPanelViewModel}">
 
-    <Grid>
+    <Grid
+        IsEnabled="{Binding IsTrackSelected}">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition
