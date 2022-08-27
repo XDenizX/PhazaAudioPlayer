@@ -19,7 +19,7 @@ namespace PhazaAudioPlayer.ViewModels
         [Reactive] public double Position { get; set; }
         [Reactive] public bool IsPlaying { get; set; }
         [Reactive] public bool IsMuted { get; set; }
-        [Reactive] public ObservableCollection<TrackViewModel> Query { get; set; }
+        [Reactive] public ObservableCollection<TrackViewModel> Queue { get; set; }
         [Reactive] public double Duration { get; set; }
 
         [Reactive] public ReactiveCommand<TrackViewModel, Unit> PlayCommand { get; set; }
