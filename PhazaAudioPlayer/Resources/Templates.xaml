@@ -86,7 +86,7 @@
                     <BeginStoryboard>
                         <Storyboard>
                             <ColorAnimation
-                                To="#44AAAAAA"
+                                To="#0AFFFFFF"
                                 Storyboard.TargetName="PlayButtonEllipse"
                                 Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
                                 Duration="0:0:0.2" />
@@ -101,7 +101,7 @@
                 StrokeThickness="2"
                 Stroke="#22FFFFFF"
                 Opacity="0.8"
-                Fill="#44AAAAAA"
+                Fill="#0AFFFFFF"
                 VerticalAlignment="Stretch"
                 HorizontalAlignment="Stretch" />
 
