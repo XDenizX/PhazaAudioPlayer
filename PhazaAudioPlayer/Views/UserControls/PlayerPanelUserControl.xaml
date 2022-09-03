@@ -119,11 +119,13 @@
                 Style="{StaticResource LikeButtonStyle}">
 
                 <hc:StatusSwitchElement.CheckedElement>
+                    
                     <Image
                         Width="20"
                         Height="20"
                         Margin="3"
                         Source="{StaticResource FilledHeartImage}" />
+                    
                 </hc:StatusSwitchElement.CheckedElement>
 
                 <Image
@@ -201,8 +203,6 @@
                 Margin="3, 0"
                 Template="{StaticResource VolumeButtonTemplate}"
                 ToolTip="Громкость">
-                
-                
                 
             </ToggleButton>
 

@@ -7,67 +7,83 @@ using System.Reactive.Linq;
 using System.Windows.Media;
 using ReactiveMarbles.ObservableEvents;
 
-namespace PhazaAudioPlayer.ViewModels
+namespace PhazaAudioPlayer.ViewModels;
+
+public class PlayerPanelViewModel : ReactiveObject
 {
-    public class PlayerPanelViewModel : ReactiveObject
+    private readonly MediaPlayer _mediaPlayer = new();
+
+    [Reactive] public TrackViewModel CurrentTrack { get; set; }
+    [Reactive] public bool IsTrackSelected { get; set; }
+    [Reactive] public float Volume { get; set; } = 50;
+    [Reactive] public double Position { get; set; }
+    [Reactive] public bool IsPlaying { get; set; }
+    [Reactive] public bool IsMuted { get; set; }
+    [Reactive] public ObservableCollection<TrackViewModel> Queue { get; set; }
+    [Reactive] public double Duration { get; set; }
+
+    [Reactive] public ReactiveCommand<TrackViewModel, Unit> PlayCommand { get; set; }
+    [Reactive] public ReactiveCommand<TrackViewModel, Unit> PauseCommand { get; set; }
+    [Reactive] public ReactiveCommand<TrackViewModel, Unit> ResumeCommand { get; set; }
+
+    public PlayerPanelViewModel()
     {
-        private readonly MediaPlayer _mediaPlayer = new();
+        var volumeSubscribe = this
+            .WhenAnyValue(x => x.Volume)
+            .Select(x => x / 100)
+            .Subscribe(volume => _mediaPlayer.Volume = volume);
 
-        [Reactive] public TrackViewModel CurrentTrack { get; set; }
-        [Reactive] public bool IsTrackSelected { get; set; }
-        [Reactive] public float Volume { get; set; } = 50;
-        [Reactive] public double Position { get; set; }
-        [Reactive] public bool IsPlaying { get; set; }
-        [Reactive] public bool IsMuted { get; set; }
-        [Reactive] public ObservableCollection<TrackViewModel> Queue { get; set; }
-        [Reactive] public double Duration { get; set; }
+        var timerObservable = Observable
+            .Timer(DateTimeOffset.Now, TimeSpan.FromSeconds(1), RxApp.MainThreadScheduler);
 
-        [Reactive] public ReactiveCommand<TrackViewModel, Unit> PlayCommand { get; set; }
+        var positionRefreshSubscribe = timerObservable
+            .Subscribe(x => Position = _mediaPlayer.Position.TotalSeconds);
 
-        public PlayerPanelViewModel()
-        {
-            var volumeSubscribe = this
-                .WhenAnyValue(x => x.Volume)
-                .Select(x => x / 100)
-                .Subscribe(volume => _mediaPlayer.Volume = volume);
+        var positionSubscribe = this
+            .WhenAnyValue(x => x.Position)
+            .Subscribe(x => _mediaPlayer.Position = TimeSpan.FromSeconds(x));
 
-            var timerObservable = Observable
-                .Timer(DateTimeOffset.Now, TimeSpan.FromSeconds(1), RxApp.MainThreadScheduler);
+        var mediaOpenObservable = _mediaPlayer.Events().MediaOpened;
 
-            var positionRefreshSubscribe = timerObservable
-                .Subscribe(x => Position = _mediaPlayer.Position.TotalSeconds);
-
-            var positionSubscribe = this
-                .WhenAnyValue(x => x.Position)
-                .Subscribe(x => _mediaPlayer.Position = TimeSpan.FromSeconds(x));
-
-            var mediaOpenObservable = _mediaPlayer.Events().MediaOpened;
-
-            var mediaOpenSubscribe = mediaOpenObservable
-                .Subscribe(x =>
+        var mediaOpenSubscribe = mediaOpenObservable
+            .Subscribe(x =>
+            {
+                if (_mediaPlayer.NaturalDuration.HasTimeSpan)
                 {
-                    if (_mediaPlayer.NaturalDuration.HasTimeSpan)
-                    {
-                        Duration = _mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
-                    }
-                });
+                    Duration = _mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+                }
+            });
 
-            var isMutedObservable = this
-                .WhenAnyValue(x => x.IsMuted)
-                .Subscribe(isMuted => _mediaPlayer.IsMuted = isMuted);
+        var isMutedObservable = this
+            .WhenAnyValue(x => x.IsMuted)
+            .Subscribe(isMuted => _mediaPlayer.IsMuted = isMuted);
 
-            var selectedTrackObservable = this
-                .WhenAnyValue(x => x.CurrentTrack)
-                .Select(track => track != default)
-                .Subscribe(isSelected => IsTrackSelected = isSelected);
+        var selectedTrackObservable = this
+            .WhenAnyValue(x => x.CurrentTrack)
+            .Select(track => track != default)
+            .Subscribe(isSelected => IsTrackSelected = isSelected);
 
-            PlayCommand = ReactiveCommand.Create<TrackViewModel>(Play);
-        }
+        PlayCommand = ReactiveCommand.Create<TrackViewModel>(Play);
+        
+    }
 
-        private void Play(TrackViewModel track)
-        {
-            _mediaPlayer.Open(track.Path);
-            _mediaPlayer.Play();
-        }
+    private void Play(TrackViewModel track)
+    {
+        _mediaPlayer.Open(track.Path);
+        _mediaPlayer.Play();
+        IsPlaying = true;
+        track.IsPlaying = true;
+    }
+
+    private void Pause()
+    {
+        _mediaPlayer.Pause();
+        IsPlaying = false;
+    }
+
+    private void Resume()
+    {
+        _mediaPlayer.Play();
+        IsPlaying = true;
     }
 }

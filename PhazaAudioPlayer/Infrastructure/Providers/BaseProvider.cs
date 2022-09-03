@@ -40,6 +40,6 @@ public abstract class BaseProvider<T> : IProviderOf<T>
 
     public virtual TObject Get<TObject>() where TObject : T
     {
-        return (TObject)Get(typeof(TObject));
+        return (TObject) Get(typeof(TObject));
     }
 }

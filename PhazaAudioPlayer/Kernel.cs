@@ -1,20 +1,16 @@
 ﻿using Ninject;
 using PhazaAudioPlayer.Infrastructure.Modules;
 
-namespace PhazaAudioPlayer
+namespace PhazaAudioPlayer;
+
+public static class Kernel
 {
-    public static class Kernel
+    private static IKernel _kernel;
+
+    public static T Get<T>()
     {
-        private static IKernel _kernel;
+        _kernel ??= new StandardKernel(new ViewModelsBindModule());
 
-        public static T Get<T>()
-        {
-            if (_kernel == null)
-            {
-                _kernel = new StandardKernel(new ViewModelsBindModule());
-            }
-
-            return _kernel.Get<T>();
-        }
+        return _kernel.Get<T>();
     }
 }

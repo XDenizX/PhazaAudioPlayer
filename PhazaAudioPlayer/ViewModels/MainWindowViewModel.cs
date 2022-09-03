@@ -4,7 +4,6 @@ using System.Windows.Controls;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using ReactiveMarbles.ObservableEvents;
-using static PhazaAudioPlayer.ViewModels.SideMenuViewModel;
 
 namespace PhazaAudioPlayer.ViewModels;
 

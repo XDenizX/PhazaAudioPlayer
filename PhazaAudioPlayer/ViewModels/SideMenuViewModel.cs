@@ -7,33 +7,34 @@ using System;
 using System.Reactive;
 using System.Windows.Controls;
 
-namespace PhazaAudioPlayer.ViewModels
+namespace PhazaAudioPlayer.ViewModels;
+
+public class SideMenuViewModel : ReactiveObject
 {
-    public class SideMenuViewModel : ReactiveObject
+    [Reactive] public ReactiveCommand<Type, Unit> SwitchContentCommand { get; set; }
+
+    private readonly IProviderOf<UserControl> _contentProvider = new ContentProvider();
+
+    public UserControl DefaultContent => _contentProvider.Get<MainContent>();
+
+    public UserControl CurrentContent { get; private set; }
+
+    public delegate void ContentSwitchedHandler(UserControl content);
+    public event ContentSwitchedHandler ContentSwitched;
+
+    public SideMenuViewModel()
     {
-        [Reactive] public ReactiveCommand<Type, Unit> SwitchContentCommand { get; set; }
+        SwitchContentCommand = ReactiveCommand.Create<Type>(SwitchContent);
+    }
 
-        private readonly IProviderOf<UserControl> _contentProvider = new ContentProvider();
-
-        public UserControl DefaultContent => _contentProvider.Get<MainContent>();
-
-        public UserControl CurrentContent { get; private set; }
-
-        public delegate void ContentSwitchedHandler(UserControl content);
-        public event ContentSwitchedHandler ContentSwitched;
-
-        public SideMenuViewModel()
+    private void SwitchContent(Type contentType)
+    {
+        if (!contentType.IsAssignableTo(typeof(UserControl)))
         {
-            SwitchContentCommand = ReactiveCommand.Create<Type>(SwitchContent);
+            return;
         }
 
-        private void SwitchContent(Type contentType)
-        {
-            if (contentType.IsAssignableTo(typeof(UserControl)))
-            {
-                CurrentContent = _contentProvider.Get(contentType);
-                ContentSwitched?.Invoke(CurrentContent);
-            }
-        }
+        CurrentContent = _contentProvider.Get(contentType);
+        ContentSwitched?.Invoke(CurrentContent);
     }
 }

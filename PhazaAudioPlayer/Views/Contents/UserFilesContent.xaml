@@ -16,12 +16,15 @@
     </UserControl.DataContext>
 
     <UserControl.CommandBindings>
+        
         <CommandBinding
             Command="ApplicationCommands.Delete"
             Executed="RemoveTrack" />
+        
         <CommandBinding
             Command="MediaCommands.Play"
             Executed="PlayTrack" />
+        
     </UserControl.CommandBindings>
 
     <Grid>
@@ -80,8 +83,8 @@
             </ItemsControl.ItemsPanel>
 
             <ItemsControl.Template>
-
                 <ControlTemplate>
+
                     <hc:ToggleBlock
                         VerticalContentAlignment="Stretch"
                         HorizontalContentAlignment="Stretch"
@@ -137,8 +140,8 @@
                         </hc:ToggleBlock.UnCheckedContent>
 
                     </hc:ToggleBlock>
+                    
                 </ControlTemplate>
-
             </ItemsControl.Template>
 
             <ItemsControl.ItemTemplate>

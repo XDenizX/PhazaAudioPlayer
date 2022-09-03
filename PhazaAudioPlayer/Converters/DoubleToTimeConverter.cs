@@ -8,9 +8,11 @@ public class DoubleToTimeConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        var seconds = (double)value;
+        var seconds = (double) value;
 
-        return TimeSpan.FromSeconds(Math.Round(seconds)).ToString(@"mm\:ss");
+        return TimeSpan
+            .FromSeconds(Math.Round(seconds))
+            .ToString(@"mm\:ss");
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

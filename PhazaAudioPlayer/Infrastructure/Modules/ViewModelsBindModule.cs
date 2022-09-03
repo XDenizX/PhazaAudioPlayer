@@ -1,14 +1,13 @@
 ﻿using Ninject.Modules;
 using PhazaAudioPlayer.ViewModels;
 
-namespace PhazaAudioPlayer.Infrastructure.Modules
+namespace PhazaAudioPlayer.Infrastructure.Modules;
+
+internal class ViewModelsBindModule : NinjectModule
 {
-    internal class ViewModelsBindModule : NinjectModule
+    public override void Load()
     {
-        public override void Load()
-        {
-            Bind<SideMenuViewModel>().ToSelf().InSingletonScope();
-            Bind<PlayerPanelViewModel>().ToSelf().InSingletonScope();
-        }
+        Bind<SideMenuViewModel>().ToSelf().InSingletonScope();
+        Bind<PlayerPanelViewModel>().ToSelf().InSingletonScope();
     }
 }

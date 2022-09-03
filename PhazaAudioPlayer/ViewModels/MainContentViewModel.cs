@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using DynamicData;
+using PhazaAudioPlayer.Properties;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
@@ -24,7 +25,7 @@ public class MainContentViewModel : ReactiveObject
     {
         try
         {
-            string[] files = Directory.GetFiles(@"C:\Users\deniz\Desktop\AlbumImages");
+            string[] files = Directory.GetFiles(Resources.AlbumsPath);
 
             Playlists.AddRange(files.Select(filepath => new PlaylistViewModel
             {

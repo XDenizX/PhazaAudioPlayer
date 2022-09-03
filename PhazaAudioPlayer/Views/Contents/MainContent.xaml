@@ -16,6 +16,7 @@
     </UserControl.DataContext>
 
     <Grid>
+        
         <hc:ScrollViewer
             Name="ScrollViewer"
             IsInertiaEnabled="True">
@@ -29,6 +30,7 @@
 
                 <hc:CoverView.ItemHeaderTemplate>
                     <DataTemplate>
+
                         <Grid>
 
                             <Grid.RowDefinitions>
@@ -68,6 +70,7 @@
                                     </StackPanel>
 
                                 </Border>
+
                             </Grid>
 
                             <StackPanel
@@ -88,6 +91,7 @@
                                     FontWeight="Medium" />
 
                             </StackPanel>
+
                         </Grid>
 
                     </DataTemplate>
